@@ -1,0 +1,25 @@
+---
+- name: Debug
+  vars:
+    msg: |
+      ansible_os_family [ {{ ansible_os_family }} ]
+      ansible_distribution [ {{ ansible_distribution }} ]
+      ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+
+      freebsd_install_method [ {{ freebsd_install_method }} ]
+      freebsd_use_packages [ {{ freebsd_use_packages }} ]
+      freebsd_install_retries [ {{ freebsd_install_retries }} ]
+      freebsd_install_delay [ {{ freebsd_install_delay }} ]
+      linux_install_retries [ {{ linux_install_retries }} ]
+      linux_install_delay [ {{ linux_install_delay }} ]
+      pip_executable [ {{ pip_executable|default('ABSENT') }} ]
+      pip_install_retries [ {{ pip_install_retries }} ]
+      pip_install_delay [ {{ pip_install_delay }} ]
+
+      ar_install [ {{ ar_install }} ]
+      ar_backup_conf [ {{ ar_backup_conf }} ]
+      ar_owner: [{{ ar_owner }} ]
+  debug:
+    msg: "{{ msg.split('\n') }}"
+  when: ar_debug
+  tags: [ar_debug, always]

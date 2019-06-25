@@ -1,0 +1,8 @@
+---
+# Debian vars for ansible_runner
+
+ar_packages:
+  - ansible-runner
+
+# EOF
+...

@@ -1,0 +1,8 @@
+---
+# RedHat vars for ansible_runner
+
+ar_packages:
+  - python-ansible-runner
+
+# EOF
+...

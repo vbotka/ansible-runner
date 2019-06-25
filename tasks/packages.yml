@@ -1,0 +1,52 @@
+---
+
+# FreeBSD
+- name: "packages: Install Ansible Runner packages FreeBSD"
+  pkgng:
+    name: "{{ ar_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  when:
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "packages"
+
+- name: "packages: Install Ansible Runner ports FreeBSD"
+  portinstall:
+    name: "{{ item }}"
+    use_packages: "{{ freebsd_use_packages }}"
+  loop: "{{ ar_packages }}"
+  register: result
+  retries: "{{ freebsd_install_retries }}"
+  until: result is succeeded
+  delay: "{{ freebsd_install_delay }}"
+  when:
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "ports"
+
+# Linux
+- name: "packages: Install Ansible Runner packages Linux"
+  package:
+    name: "{{ item }}"
+  loop: "{{ ar_packages }}"
+  register: result
+  retries: "{{ linux_install_retries }}"
+  until: result is succeeded
+  delay: "{{ linux_install_delay }}"
+  when: ansible_os_family == "RedHat"
+
+# pip
+- name: "packages: Install Ansible Runner packages pip"
+  pip:
+    name: "{{ item }}"
+    executable: "{{ pip_executable|default(omit) }}"
+  loop: "{{ ar_packages }}"
+  register: result
+  retries: "{{ pip_install_retries }}"
+  delay: "{{ pip_install_delay }}"
+  until: result is succeeded
+  when: ansible_os_family == "Debian"
+
+# EOF
+...

@@ -1,0 +1,18 @@
+---
+# tasks for ansible_runner
+
+- import_tasks: vars.yml
+  tags: [ar_vars, always]
+
+- import_tasks: debug.yml
+  tags: [ar_debug, always]
+
+- import_tasks: packages.yml
+  when: ar_install
+  tags: ar_packages
+
+- import_tasks: configure.yml
+  tags: ar_config
+
+# EOF
+...
