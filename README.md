@@ -1,19 +1,16 @@
-Ansible Lint
-============
+# Ansible Runner
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-ansible_runner.svg?branch=master)](https://travis-ci.org/vbotka/ansible-ansible_runner)
+[![Build Status](https://travis-ci.org/vbotka/ansible-runner.svg?branch=master)](https://travis-ci.org/vbotka/ansible-runner)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/ansible_runner/). Install and configure *Ansible Runner*.
 
 
-Requirements
-------------
+## Requirements
 
 None.
 
 
-Role Variables
---------------
+## Role Variables
 
 To install OS specific packages set
 
@@ -26,27 +23,23 @@ Put OS specific custom variables into the directory /vars. Review /tasks/vars.ym
 (TBD). Review the defaults and examples in vars.
 
 
-Dependencies
-------------
+## Dependencies
 
 None.
 
 
-References
-----------
+## References
 
 - [Ansible Runner - readthedoc](https://ansible-runner.readthedocs.io/en/latest/)
 - [Ansible Runner - github](https://github.com/ansible/ansible-runner/)
 
 
-License
--------
+## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
 
 
 
-Author Information
-------------------
+## Author Information
 
 [Vladimir Botka](https://botka.link)
