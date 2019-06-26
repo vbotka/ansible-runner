@@ -21,7 +21,7 @@ To install OS specific packages set
 ar_packages_install: true
 ```
 
-Put OS specific custom variables into the directory /vars. Review /tasks/vars.yml to learn the recedece of the variables.
+Put OS specific custom variables into the directory /vars. Review /tasks/vars.yml to learn the precedence of the variables.
 
 (TBD). Review the defaults and examples in vars.
 
