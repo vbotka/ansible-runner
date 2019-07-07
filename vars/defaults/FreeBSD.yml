@@ -1,8 +1,9 @@
 ---
-# FreeBSD vars for ansible_runner
+# FreeBSD vars/defaults for ansible_runner
 
 ar_packages:
-  - sysutils/py-ansible-runner
+  - name: sysutils/py-ansible-runner
+ar_links: []
 
 # EOF
 ...

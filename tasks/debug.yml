@@ -1,25 +1,37 @@
 ---
-- name: Debug
+
+- name: "debug: Ansible Runner"
   vars:
     msg: |
       ansible_os_family [ {{ ansible_os_family }} ]
       ansible_distribution [ {{ ansible_distribution }} ]
       ansible_distribution_major_version [ {{ ansible_distribution_major_version }} ]
+      ansible_distribution_version [ {{ ansible_distribution_version }} ]
+      ansible_distribution_release [ {{ ansible_distribution_release }} ]
 
+      ar_backup_conf [ {{ ar_backup_conf }} ]
+
+      ar_packages_install [ {{ ar_packages_install }} ]
+      ar_packages
+      {{ ar_packages | to_nice_yaml }}
       freebsd_install_method [ {{ freebsd_install_method }} ]
       freebsd_use_packages [ {{ freebsd_use_packages }} ]
       freebsd_install_retries [ {{ freebsd_install_retries }} ]
       freebsd_install_delay [ {{ freebsd_install_delay }} ]
       linux_install_retries [ {{ linux_install_retries }} ]
       linux_install_delay [ {{ linux_install_delay }} ]
-      pip_executable [ {{ pip_executable|default('ABSENT') }} ]
       pip_install_retries [ {{ pip_install_retries }} ]
       pip_install_delay [ {{ pip_install_delay }} ]
+      pip_executable [ {{ pip_executable|default('ABSENT') }} ]
+      pip_extraagrs [ {{ pip_extraagrs|default('ABSENT') }} ]
 
-      ar_install [ {{ ar_install }} ]
-      ar_backup_conf [ {{ ar_backup_conf }} ]
-      ar_owner: [{{ ar_owner }} ]
+      ansible_user [ {{ ansible_user }} ]
+      ar_owner [ {{ ar_owner }} ]
+      ar_links
+      {{ ar_links | to_nice_yaml }}
+
   debug:
     msg: "{{ msg.split('\n') }}"
-  when: ar_debug
-  tags: [ar_debug, always]
+
+# EOF
+...

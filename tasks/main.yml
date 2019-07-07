@@ -5,11 +5,15 @@
   tags: [ar_vars, always]
 
 - import_tasks: debug.yml
+  when: ar_debug
   tags: [ar_debug, always]
 
 - import_tasks: packages.yml
-  when: ar_install
+  when: ar_packages_install
   tags: ar_packages
+
+- import_tasks: links.yml
+  tags: ar_links
 
 - import_tasks: configure.yml
   tags: ar_config

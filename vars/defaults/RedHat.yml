@@ -1,8 +1,9 @@
 ---
-# RedHat vars for ansible_runner
+# RedHat vars/defaults for ansible_runner
 
 ar_packages:
-  - python-ansible-runner
+  - name: python-ansible-runner
+ar_links: []
 
 # EOF
 ...

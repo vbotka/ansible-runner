@@ -2,7 +2,6 @@
 # defaults ansible_runner
 
 ar_debug: false
-ar_install: true
 ar_backup_conf: false
 
 # Packages
@@ -19,9 +18,6 @@ linux_install_delay: 5
 # Python
 pip_install_retries: 10
 pip_install_delay: 5
-
-# Configuration
-ar_owner: "admin"
 
 # EOF
 ...

@@ -3,7 +3,8 @@
 # FreeBSD
 - name: "packages: Install Ansible Runner packages FreeBSD"
   pkgng:
-    name: "{{ ar_packages }}"
+    name: "{{ item.name }}"
+  loop: "{{ ar_packages }}"
   register: result
   retries: "{{ freebsd_install_retries }}"
   until: result is succeeded
@@ -14,7 +15,7 @@
 
 - name: "packages: Install Ansible Runner ports FreeBSD"
   portinstall:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
     use_packages: "{{ freebsd_use_packages }}"
   loop: "{{ ar_packages }}"
   register: result
@@ -25,28 +26,54 @@
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "ports"
 
+- name: "packages: Debug FreeBSD"
+  when: ar_debug
+  debug:
+    var: result
+
 # Linux
 - name: "packages: Install Ansible Runner packages Linux"
+  when: ansible_os_family == "RedHat"
   package:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
   loop: "{{ ar_packages }}"
   register: result
   retries: "{{ linux_install_retries }}"
-  until: result is succeeded
   delay: "{{ linux_install_delay }}"
-  when: ansible_os_family == "RedHat"
+  until: result is succeeded
+
+- name: "packages: Debug Linux"
+  when: ar_debug
+  debug:
+    var: result
 
 # pip
-- name: "packages: Install Ansible Runner packages pip"
+- name: "packages: Install Ansible Runner pip packages for {{ ar_owner }}"
+  become_user: "{{ ar_owner }}"
+  become: true
+  changed_when: false  # Note 1.
   pip:
-    name: "{{ item }}"
+    name: "{{ item.name }}"
+    version: "{{ item.version|default(omit) }}"
+    state: "{{ item.state|default(omit) }}"
+    requirements: "{{ pip_requirements|default(omit) }}"
     executable: "{{ pip_executable|default(omit) }}"
+    extra_args: "{{ pip_extraagrs|default(omit) }}"
   loop: "{{ ar_packages }}"
   register: result
   retries: "{{ pip_install_retries }}"
   delay: "{{ pip_install_delay }}"
   until: result is succeeded
   when: ansible_os_family == "Debian"
+
+- name: "packages: Debug pip"
+  when: ar_debug
+  debug:
+    var: result
+
+# Note 1.
+# The pip module isn't always idempotent #28952
+# https://github.com/ansible/ansible/issues/28952
 
 # EOF
 ...

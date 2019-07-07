@@ -18,7 +18,8 @@ To install OS specific packages set
 ar_packages_install: true
 ```
 
-Put OS specific custom variables into the directory /vars. Review /tasks/vars.yml to learn the precedence of the variables.
+Put OS specific custom variables into the directory /vars. Review
+/tasks/vars.yml to learn the precedence of the variables.
 
 (TBD). Review the defaults and examples in vars.
 
@@ -26,6 +27,30 @@ Put OS specific custom variables into the directory /vars. Review /tasks/vars.ym
 ## Dependencies
 
 None.
+
+
+## Ubuntu
+
+This role uses *pip* to install *ansible-runner* on Ubuntu. Set
+variable *ar_owner* to the user who will own the installed package.
+
+```
+ar_owner: admin
+```
+
+By default
+
+```
+ar_owner: "{{ ansible_user }}"
+```
+
+The installation task will run
+
+```
+become_user: "{{ ar_owner }}"
+```
+
+Review *tasks/packages.yml* 
 
 
 ## References
