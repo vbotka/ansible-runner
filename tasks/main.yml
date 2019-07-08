@@ -5,7 +5,7 @@
   tags: [ar_vars, always]
 
 - import_tasks: debug.yml
-  when: ar_debug
+  when: ar_debug|bool
   tags: [ar_debug, always]
 
 - import_tasks: packages.yml

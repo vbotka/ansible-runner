@@ -27,7 +27,7 @@
     - freebsd_install_method|lower == "ports"
 
 - name: "packages: Debug FreeBSD"
-  when: ar_debug
+  when: ar_debug|bool
   debug:
     var: result
 
@@ -56,7 +56,6 @@
     name: "{{ item.name }}"
     version: "{{ item.version|default(omit) }}"
     state: "{{ item.state|default(omit) }}"
-    requirements: "{{ pip_requirements|default(omit) }}"
     executable: "{{ pip_executable|default(omit) }}"
     extra_args: "{{ pip_extraagrs|default(omit) }}"
   loop: "{{ ar_packages }}"
@@ -66,8 +65,29 @@
   until: result is succeeded
   when: ansible_os_family == "Debian"
 
-- name: "packages: Debug pip"
-  when: ar_debug
+- name: "packages: Debug pip packages"
+  when: ar_debug|bool
+  debug:
+    var: result
+
+- name: "packages: Install Ansible Runner pip requirements for {{ ar_owner }}"
+  become_user: "{{ ar_owner }}"
+  become: true
+  changed_when: false  # Note 1.
+  pip:
+    requirements: "{{ pip_requirements|default(omit) }}"
+    executable: "{{ pip_executable|default(omit) }}"
+    extra_args: "{{ pip_extraagrs|default(omit) }}"
+  register: result
+  retries: "{{ pip_install_retries }}"
+  delay: "{{ pip_install_delay }}"
+  until: result is succeeded
+  when:
+    - ansible_os_family == "Debian"
+    - pip_requirements is defined
+
+- name: "packages: Debug pip requirements"
+  when: ar_debug|bool
   debug:
     var: result
 

@@ -2,7 +2,7 @@
 
 - debug:
     msg: No task ATM.
-  when: ar_debug
+  when: ar_debug|bool
 
 # EOF
 ...
