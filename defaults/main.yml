@@ -6,18 +6,22 @@ ar_backup_conf: false
 
 # Packages
 ar_packages_install: true
+
 # FreeBSD
+freebsd_install_retries: 10
+freebsd_install_delay: 5
 freebsd_install_method: "packages"
 # freebsd_install_method: "ports"
 freebsd_use_packages: true
-freebsd_install_retries: 10
-freebsd_install_delay: 5
+
 # Linux
 linux_install_retries: 10
 linux_install_delay: 5
+
 # Python
 pip_install_retries: 10
 pip_install_delay: 5
+pip_executable: pip3
 
 # EOF
 ...

@@ -13,6 +13,11 @@
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "packages"
 
+- name: "packages: Debug FreeBSD packages"
+  when: ar_debug|bool
+  debug:
+    var: result
+
 - name: "packages: Install Ansible Runner ports FreeBSD"
   portinstall:
     name: "{{ item.name }}"
@@ -26,7 +31,7 @@
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "ports"
 
-- name: "packages: Debug FreeBSD"
+- name: "packages: Debug FreeBSD ports"
   when: ar_debug|bool
   debug:
     var: result
