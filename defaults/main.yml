@@ -21,7 +21,7 @@ linux_install_delay: 5
 # Python
 pip_install_retries: 10
 pip_install_delay: 5
-pip_executable: pip3
+ar_pip_executable: pip3
 
 # EOF
 ...

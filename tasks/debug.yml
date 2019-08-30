@@ -14,10 +14,11 @@
       ar_owner [{{ ar_owner }}]
       ar_backup_conf [{{ ar_backup_conf }}]
       ar_packages_install [{{ ar_packages_install }}]
+      ar_pip_executable [{{ ar_pip_executable }}]
       ar_packages
-      {{ ar_packages | to_nice_yaml }}
+      {{ ar_packages|to_nice_yaml }}
       ar_links
-      {{ ar_links | to_nice_yaml }}
+      {{ ar_links|to_nice_yaml }}
 
       freebsd_install_method [{{ freebsd_install_method }}]
       freebsd_use_packages [{{ freebsd_use_packages }}]
@@ -30,7 +31,6 @@
       pip_install_retries [{{ pip_install_retries }}]
       pip_install_delay [{{ pip_install_delay }}]
       pip_requirements [{{ pip_requirements|default('ABSENT') }}]
-      pip_executable [{{ pip_executable|default('ABSENT') }}]
       pip_extraagrs [{{ pip_extraagrs|default('ABSENT') }}]
 
   debug:

@@ -59,9 +59,9 @@
   changed_when: false  # Note 1.
   pip:
     name: "{{ item.name }}"
+    executable: "{{ ar_pip_executable }}"
     version: "{{ item.version|default(omit) }}"
     state: "{{ item.state|default(omit) }}"
-    executable: "{{ pip_executable|default(omit) }}"
     extra_args: "{{ pip_extraagrs|default(omit) }}"
   loop: "{{ ar_packages }}"
   register: result
@@ -81,7 +81,7 @@
   changed_when: false  # Note 1.
   pip:
     requirements: "{{ pip_requirements|default(omit) }}"
-    executable: "{{ pip_executable|default(omit) }}"
+    executable: "{{ ar_pip_executable }}"
     extra_args: "{{ pip_extraagrs|default(omit) }}"
   register: result
   retries: "{{ pip_install_retries }}"
