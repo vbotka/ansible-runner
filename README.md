@@ -10,29 +10,43 @@
 None.
 
 
-## Role Variables
-
-To install OS specific packages set
-
-```
-ar_packages_install: true
-```
-
-Put OS specific custom variables into the directory /vars. Review
-/tasks/vars.yml to learn the precedence of the variables.
-
-(TBD). Review the defaults and examples in vars.
-
-
 ## Dependencies
 
 None.
 
 
-## Ubuntu
+## Role Variables
 
-This role uses *pip* to install *ansible-runner* on Ubuntu. Set
-variable *ar_owner* to the user who will own the installed package.
+- Review default variables in *defaults/main.yml*
+- Review OS specific default varaibles in *vars/defaults/*
+- Review examples in *vars/main.yml*
+- Put OS specific custom variables into the directory *vars/*
+- Review *tasks/vars.yml* to learn about the precedence of the variables
+
+
+### Variables
+
+- By default the OS specific packages will be installed
+
+```
+ar_packages_install: true
+```
+
+- By default use *pip* to install *ansible-runner* on **Ubuntu and RH**.
+
+```
+ar_pip: true
+ar_pkg: false
+```
+
+- By default use packages, or ports to install *ansible-runner* on **FreeBSD**.
+
+```
+ar_pip: false
+ar_pkg: true
+```
+
+- Set variable *ar_owner* to the user who will own the installed packages.
 
 ```
 ar_owner: admin
@@ -50,7 +64,7 @@ The installation task will run
 become_user: "{{ ar_owner }}"
 ```
 
-Review *tasks/packages.yml* 
+Review *tasks/packages.yml*
 
 
 ## References
@@ -62,7 +76,6 @@ Review *tasks/packages.yml*
 ## License
 
 [![license](https://img.shields.io/badge/license-BSD-red.svg)](https://www.freebsd.org/doc/en/articles/bsdl-gpl/article.html)
-
 
 
 ## Author Information

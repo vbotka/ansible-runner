@@ -13,6 +13,8 @@
 
       ar_owner [{{ ar_owner }}]
       ar_backup_conf [{{ ar_backup_conf }}]
+      ar_pip [{{ ar_pip }}]
+      ar_pkg [{{ ar_pkg }}]
       ar_packages_install [{{ ar_packages_install }}]
       ar_pip_executable [{{ ar_pip_executable }}]
       ar_packages
