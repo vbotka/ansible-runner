@@ -7,8 +7,8 @@
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
       register: result
-      retries: "{{ freebsd_install_retries }}"
       until: result is succeeded
+      retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
 
     - name: "packages: Debug FreeBSD packages"
@@ -16,8 +16,8 @@
       debug:
         var: result
 
-  when: ansible_os_family == "FreeBSD" and
-        freebsd_install_method|lower == "packages" and
+  when: (ansible_os_family == "FreeBSD") and
+        (freebsd_install_method|lower == "packages") and
         ar_pkg|bool
 
 - name: "packages: Install FreeBSD ports"
@@ -28,8 +28,8 @@
         use_packages: "{{ freebsd_use_packages }}"
       loop: "{{ ar_packages }}"
       register: result
-      retries: "{{ freebsd_install_retries }}"
       until: result is succeeded
+      retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
 
     - name: "packages: Debug FreeBSD ports"
@@ -37,8 +37,8 @@
       debug:
         var: result
 
-  when: ansible_os_family == "FreeBSD" and
-        freebsd_install_method|lower == "ports" and
+  when: (ansible_os_family == "FreeBSD") and
+        (freebsd_install_method|lower == "ports") and
         ar_pkg|bool
 
 - name: "packages: Install Linux packages"
@@ -48,9 +48,9 @@
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
       register: result
+      until: result is succeeded
       retries: "{{ linux_install_retries }}"
       delay: "{{ linux_install_delay }}"
-      until: result is succeeded
 
     - name: "packages: Debug Linux"
       when: ar_debug|bool
@@ -58,8 +58,8 @@
         var: result
 
   when: ((ansible_os_family == "RedHat") or
-       (ansible_os_family == "Debian")) and
-       ar_pkg|bool
+         (ansible_os_family == "Debian")) and
+        ar_pkg|bool
 
 - name: "packages: Install pip"
   block:
@@ -75,9 +75,9 @@
         extra_args: "{{ pip_extraagrs|default(omit) }}"
       loop: "{{ ar_packages }}"
       register: result
+      until: result is succeeded
       retries: "{{ pip_install_retries }}"
       delay: "{{ pip_install_delay }}"
-      until: result is succeeded
 
     - name: "packages: Debug pip packages"
       when: ar_debug|bool
@@ -93,9 +93,9 @@
         executable: "{{ ar_pip_executable }}"
         extra_args: "{{ pip_extraagrs|default(omit) }}"
       register: result
+      until: result is succeeded
       retries: "{{ pip_install_retries }}"
       delay: "{{ pip_install_delay }}"
-      until: result is succeeded
       when: pip_requirements is defined
 
     - name: "packages: Debug pip requirements"
@@ -104,7 +104,6 @@
         var: result
 
   when: ar_pip|bool
-
 
 # Note 1.
 # The pip module isn't always idempotent #28952
