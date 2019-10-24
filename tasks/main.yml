@@ -9,13 +9,13 @@
   tags: [ar_debug, always]
 
 - import_tasks: packages.yml
-  when: ar_packages_install|bool
+  when: ar_install|bool
   tags: ar_packages
 
 - import_tasks: links.yml
   tags: ar_links
 
-- import_tasks: configure.yml
+- import_tasks: config.yml
   tags: ar_config
 
 # EOF

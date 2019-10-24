@@ -9,19 +9,7 @@
       ansible_distribution_version [{{ ansible_distribution_version }}]
       ansible_distribution_release [{{ ansible_distribution_release }}]
 
-      ansible_user_id [{{ ansible_user_id }}]
-
-      ar_owner [{{ ar_owner }}]
-      ar_backup_conf [{{ ar_backup_conf }}]
-      ar_pip [{{ ar_pip }}]
-      ar_pkg [{{ ar_pkg }}]
-      ar_pip_executable [{{ ar_pip_executable }}]
-
-      ar_packages_install [{{ ar_packages_install }}]
-      ar_packages
-      {{ ar_packages|to_nice_yaml }}
-      ar_links
-      {{ ar_links|to_nice_yaml }}
+      ar_install [{{ ar_install }}]
 
       freebsd_install_method [{{ freebsd_install_method }}]
       freebsd_use_packages [{{ freebsd_use_packages }}]
@@ -33,8 +21,24 @@
 
       pip_install_retries [{{ pip_install_retries }}]
       pip_install_delay [{{ pip_install_delay }}]
-      pip_requirements [{{ pip_requirements|default('UNDEFINED') }}]
       pip_extraagrs [{{ pip_extraagrs|default('UNDEFINED') }}]
+
+      ar_pip_install [{{ ar_pip_install }}]
+      ar_pip_executable [{{ ar_pip_executable }}]
+      ar_pip_requirements [{{ pip_requirements|default('UNDEFINED') }}]
+
+      ansible_user_id [{{ ansible_user_id }}]
+
+      ar_owner [{{ ar_owner }}]
+      ar_backup_conf [{{ ar_backup_conf }}]
+
+      ar_packages
+      {{ ar_packages|to_nice_yaml }}
+      ar_links
+      {{ ar_links|to_nice_yaml }}
+
+      ar_config
+      {{ ar_config|to_nice_yaml }}
 
   debug:
     msg: "{{ msg.split('\n') }}"

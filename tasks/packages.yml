@@ -1,6 +1,9 @@
 ---
 
-- name: "packages: Install FreeBSD packages"
+# packages -----------------------------------------------------------
+
+# FreeBSD
+- name: "packages: Install Ansible Runner FreeBSD packages"
   block:
     - name: "packages: Install Ansible Runner packages FreeBSD"
       pkgng:
@@ -10,15 +13,14 @@
       until: result is succeeded
       retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
-
     - name: "packages: Debug FreeBSD packages"
       when: ar_debug|bool
       debug:
         var: result
-
-  when: (ansible_os_family == "FreeBSD") and
-        (freebsd_install_method|lower == "packages") and
-        ar_pkg|bool
+  when:
+    - not ar_pip_install
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "packages"
 
 - name: "packages: Install FreeBSD ports"
   block:
@@ -31,17 +33,17 @@
       until: result is succeeded
       retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
-
     - name: "packages: Debug FreeBSD ports"
       when: ar_debug|bool
       debug:
         var: result
+  when:
+    - not ar_pip_install
+    - ansible_os_family == "FreeBSD"
+    - freebsd_install_method|lower == "ports"
 
-  when: (ansible_os_family == "FreeBSD") and
-        (freebsd_install_method|lower == "ports") and
-        ar_pkg|bool
-
-- name: "packages: Install Linux packages"
+# Linux
+- name: "packages: Install Ansible Runner packages Linux"
   block:
     - name: "packages: Install Ansible Runner packages Linux"
       package:
@@ -51,59 +53,76 @@
       until: result is succeeded
       retries: "{{ linux_install_retries }}"
       delay: "{{ linux_install_delay }}"
-
     - name: "packages: Debug Linux"
       when: ar_debug|bool
       debug:
         var: result
+  when:
+    - not ar_pip_install
+    - ansible_os_family == "RedHat" or ansible_os_family == "Debian"
 
-  when: ((ansible_os_family == "RedHat") or
-         (ansible_os_family == "Debian")) and
-        ar_pkg|bool
-
-- name: "packages: Install pip"
+# pip ----------------------------------------------------------------
+- name: "packages: Test {{ ar_pip_executable }} exists"
+  when: ar_pip_install
   block:
-    - name: "packages: Install Ansible Runner pip packages for {{ ar_owner }}"
-      become_user: "{{ ar_owner }}"
-      become: true
-      changed_when: false  # Note 1.
-      pip:
-        name: "{{ item.name }}"
-        executable: "{{ ar_pip_executable }}"
-        version: "{{ item.version|default(omit) }}"
-        state: "{{ item.state|default(omit) }}"
-        extra_args: "{{ pip_extraagrs|default(omit) }}"
-      loop: "{{ ar_packages }}"
+    - name: "packages: Stat {{ ar_pip_executable }}"
+      stat:
+        path: "{{ ar_pip_executable }}"
       register: result
-      until: result is succeeded
-      retries: "{{ pip_install_retries }}"
-      delay: "{{ pip_install_delay }}"
-
-    - name: "packages: Debug pip packages"
-      when: ar_debug|bool
+    - name: "packages: Not exists {{ ar_pip_executable }}"
+      when: not result.stat.exists
       debug:
-        var: result
+        msg: "[ERROR] {{ ar_pip_executable }} does not exist. End of host."
+    - name: "packages: Meta end host"
+      when: not result.stat.exists
+      meta: end_host
 
-    - name: "packages: Install Ansible Runner pip requirements for {{ ar_owner }}"
-      become_user: "{{ ar_owner }}"
-      become: true
-      changed_when: false  # Note 1.
-      pip:
-        requirements: "{{ pip_requirements|default(omit) }}"
-        executable: "{{ ar_pip_executable }}"
-        extra_args: "{{ pip_extraagrs|default(omit) }}"
-      register: result
-      until: result is succeeded
-      retries: "{{ pip_install_retries }}"
-      delay: "{{ pip_install_delay }}"
-      when: pip_requirements is defined
+- name: "packages: Install Ansible Runner pip packages for {{ ar_owner }}"
+  when: ar_pip_install
+  become_user: "{{ ar_owner }}"
+  become: true
+  changed_when: false  # Note 1.
+  pip:
+    name: "{{ item.name }}"
+    executable: "{{ ar_pip_executable }}"
+    version: "{{ item.version|default(omit) }}"
+    state: "{{ item.state|default(omit) }}"
+    extra_args: "{{ pip_extraagrs|default(omit) }}"
+  loop: "{{ ar_packages }}"
+  register: result
+  until: result is succeeded
+  retries: "{{ pip_install_retries }}"
+  delay: "{{ pip_install_delay }}"
 
-    - name: "packages: Debug pip requirements"
-      when: ar_debug|bool
-      debug:
-        var: result
+- name: "packages: Debug pip packages"
+  when:
+    - ar_pip_install
+    - ar_debug|bool
+  debug:
+    var: result
 
-  when: ar_pip|bool
+- name: "packages: Install Ansible Runner pip requirements for {{ ar_owner }}"
+  when:
+    - ar_pip_install
+    - ar_pip_requirements is defined
+  become_user: "{{ ar_owner }}"
+  become: true
+  changed_when: false  # Note 1.
+  pip:
+    requirements: "{{ ar_pip_requirements }}"
+    executable: "{{ ar_pip_executable }}"
+    extra_args: "{{ pip_extraagrs|default(omit) }}"
+  register: result
+  until: result is succeeded
+  retries: "{{ pip_install_retries }}"
+  delay: "{{ pip_install_delay }}"
+
+- name: "packages: Debug pip requirements"
+  when:
+    - ar_pip_install
+    - ar_debug|bool
+  debug:
+    var: result
 
 # Note 1.
 # The pip module isn't always idempotent #28952

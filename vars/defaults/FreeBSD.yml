@@ -1,11 +1,12 @@
 ---
 # FreeBSD vars/defaults for ansible_runner
 
-ar_pip: false
-ar_pkg: true
+ar_pip_install: false
 
 ar_packages:
   - name: sysutils/py-ansible-runner
+
+ar_pip_executable: "{{ pip_executable_freebsd }}"
 
 ar_links: []
 

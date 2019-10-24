@@ -1,13 +1,15 @@
 ---
 # Debian vars/defaults for ansible_runner
 
-ar_pip: true
-ar_pkg: false
+ar_pip_install: true
 
 ar_packages:
   - name: ansible-runner
   # version: 1.3.4
   # state: present
+
+# ar_pip_executable: "/home/{{ mal_owner }}/.local/bin/pip2"
+ar_pip_executable: "{{ pip_executable_debian }}"
 
 ar_links:
   - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"

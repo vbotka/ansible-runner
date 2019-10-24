@@ -1,11 +1,13 @@
 ---
 # defaults ansible_runner
 
+ar_install: true
 ar_debug: false
 ar_backup_conf: false
 
-# Packages
-ar_packages_install: true
+# Install distro packages or pip
+# false - distro packages, true -  pip
+# ar_pip_install: false                 # OS specific variable see vars/defaults
 
 # FreeBSD
 freebsd_install_retries: 10
@@ -21,7 +23,17 @@ linux_install_delay: 5
 # Python
 pip_install_retries: 10
 pip_install_delay: 5
-ar_pip_executable: "/usr/bin/pip"
+# pip_extraagrs: ""                     # Optional
+
+# pip package dependent
+# ar_pip_executable: "pip3"             # OS specific variable see vars/defaults
+# ar_pip_requirements: []               # Optional
+
+# Configuration
+ar_config: []
+
+# Links
+# ar_links: []  # OS specific variable see vars/defaults
 
 # EOF
 ...

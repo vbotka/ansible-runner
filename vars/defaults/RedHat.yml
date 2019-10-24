@@ -1,11 +1,12 @@
 ---
 # RedHat vars/defaults for ansible_runner
 
-ar_pip: true
-ar_pkg: false
+ar_pip_install: false
 
 ar_packages:
   - name: python-ansible-runner
+
+ar_pip_executable: "{{ pip_executable_redhat}}"
 
 ar_links: []
 
