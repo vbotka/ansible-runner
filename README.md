@@ -29,24 +29,22 @@ None.
 - By default the OS specific packages will be installed
 
 ```
-ar_packages_install: true
+ar_install: true
 ```
 
-- By default use *pip* to install *ansible-runner* on **Ubuntu and RH**.
+- By default use *pip* to install *ansible-runner* on Ubuntu and RH.
 
 ```
-ar_pip: true
-ar_pkg: false
+ar_pip_install: true
 ```
 
-- By default use packages, or ports to install *ansible-runner* on **FreeBSD**.
+- By default use packages, or ports to install *ansible-runner* on FreeBSD.
 
 ```
-ar_pip: false
-ar_pkg: true
+ar_pip_install: false
 ```
 
-- Set variable *ar_owner* to the user who will own the installed packages.
+- Set variable *ar_owner* to the user who will own the packages installed by pip.
 
 ```
 ar_owner: admin
@@ -55,13 +53,16 @@ ar_owner: admin
 By default
 
 ```
-ar_owner: "{{ ansible_user }}"
+ar_owner: "{{ ansible_user_id }}"
 ```
 
-The installation task will run
+The *pip* installation task will run
 
 ```
 become_user: "{{ ar_owner }}"
+become: true
+pip:
+  name: ...
 ```
 
 Review *tasks/packages.yml*
