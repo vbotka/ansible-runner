@@ -70,7 +70,7 @@ Review *tasks/packages.yml*
 
 ## Examples
 
-1) [Repeat play until succeeds](contrib/repeat_play_until_succeeds.bash)
+1) [Repeat play until succeeds](https://github.com/vbotka/ansible-runner/blob/master/contrib/repeat_play_until_succeeds.bash)
 
 ## References
 
