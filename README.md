@@ -68,6 +68,10 @@ pip:
 Review *tasks/packages.yml*
 
 
+## Examples
+
+1) [Repeat play until succeeds](contrib/repeat_play_until_succeeds.bash)
+
 ## References
 
 - [Ansible Runner - readthedoc](https://ansible-runner.readthedocs.io/en/latest/)
