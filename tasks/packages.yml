@@ -70,12 +70,9 @@
         path: "{{ ar_pip_executable }}"
       register: result
     - name: "packages: Not exists {{ ar_pip_executable }}"
+      fail:
+        msg: "[ERROR] {{ ar_pip_executable }} does not exist."
       when: not result.stat.exists
-      debug:
-        msg: "[ERROR] {{ ar_pip_executable }} does not exist. End of host."
-    - name: "packages: Meta end host"
-      when: not result.stat.exists
-      meta: end_host
 
 - name: "packages: Install Ansible Runner pip packages for {{ ar_owner }}"
   when: ar_pip_install

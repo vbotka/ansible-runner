@@ -8,7 +8,6 @@ ar_packages:
   # version: 1.3.4
   # state: present
 
-# ar_pip_executable: "/home/{{ mal_owner }}/.local/bin/pip2"
 ar_pip_executable: "{{ pip_executable_debian }}"
 
 ar_links:
