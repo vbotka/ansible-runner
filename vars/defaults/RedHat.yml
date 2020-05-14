@@ -6,7 +6,7 @@ ar_pip_install: false
 ar_packages:
   - name: python-ansible-runner
 
-ar_pip_executable: "{{ pip_executable_redhat}}"
+ar_pip_executable: "{{ pip_executable_redhat }}"
 
 ar_links: []
 
