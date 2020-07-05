@@ -115,7 +115,7 @@ configuration
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   lp_debug: true
+   ar_debug: true
 
 , or set the extra variable in the command
 
@@ -181,7 +181,7 @@ Test single tasks at single remote host *test_01*. Create a playbook
    - hosts: test_01
      become: true
      roles:
-       - vbotka.ansible
+       - vbotka.ansible_runner
 
 Customize configuration in ``host_vars/test_01/ar-*.yml`` and check the syntax
 
