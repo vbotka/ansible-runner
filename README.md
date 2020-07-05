@@ -1,10 +1,25 @@
-# Ansible Runner
+# ansible runner
 
-[![Build Status](https://travis-ci.org/vbotka/ansible-runner.svg?branch=master)](https://travis-ci.org/vbotka/ansible-runner)
+[![Build Status](https://travis-ci.org/vbotka/ansible-runner.svg?branch=master)](https://travis-ci.org/vbotka/ansible-runner)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-runner-role.readthedocs.io/en/latest/)
 
-[Ansible role](https://galaxy.ansible.com/vbotka/ansible_runner/). Install and configure *Ansible Runner*.
+[Ansible role](https://galaxy.ansible.com/vbotka/ansible_runner/). Install and configure [Ansible Runner](https://github.com/ansible/ansible-runner).
 
-Please feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-runner/issues).
+
+[Documentation at readthedocs.io](https://ansible-runner-role.readthedocs.io) [[PDF 156k](https://github.com/vbotka/ansible-runner/blob/master/ansible-runner-role.pdf)]
+
+Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-runner/issues). Contributions are welcome.
+
+
+## Supported platforms
+
+This role has been developed and tested with
+* [Ubuntu Supported Releases](http://releases.ubuntu.com/)
+* [FreeBSD Supported Production Releases](https://www.freebsd.org/releases/)
+
+This may be different from the platforms in Ansible Galaxy which does not offer all
+released versions in time and would report an error. For example:
+`IMPORTER101: Invalid platform: "FreeBSD-11.3", skipping.`
+
 
 ## Requirements
 
