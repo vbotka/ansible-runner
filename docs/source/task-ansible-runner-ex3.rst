@@ -177,6 +177,7 @@ artifacts will be created by *ansible-runner*
 
 .. seealso::
    * `Runner Input Directory Hierarchy <https://ansible-runner.readthedocs.io/en/latest/intro.html#runner-input-directory-hierarchy>`_
+   * Example playbook how to create projects `pb-create-runner-private.yml <https://github.com/vbotka/ansible-ansible/blob/master/contrib/workbench/pb-create-runner-private.yml>`_
 
 
 Example of the project's artifacts
