@@ -1,5 +1,5 @@
 Example 1: Install ansible-runner in Ubuntu by pip for admin
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------------------------------
 
 Create a playbook
 

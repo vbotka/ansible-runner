@@ -1,11 +1,11 @@
-Example 3: Run Ansible playbooks in cron
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example 1: Run Ansible playbooks in cron
+----------------------------------------
 
 .. contents::
    :local:
 
 Run ssh-agent
-"""""""""""""
+^^^^^^^^^^^^^
 
 ``ssh-agent`` is needed to provide the ssh connection plugin with the
 password to the private key, when used. The script below is executed
@@ -74,7 +74,7 @@ Example of *.ssh/environment* created by *ssh-agent*
 
 
 Wrapper ansible-runner
-""""""""""""""""""""""
+^^^^^^^^^^^^^^^^^^^^^^
      
 Wrapper of *ansible-runner* will source *.ssh/environment* (9) and run
 the *playbook* from the *project* (10)
@@ -106,7 +106,7 @@ the *playbook* from the *project* (10)
 
 
 Command for cron
-""""""""""""""""
+^^^^^^^^^^^^^^^^
 
 The script below will use *arwrapper.sh* (9) to run the playbook
 *pb-01.yml* (7) in the projects *test_01, test_02,* and *test_03*
@@ -139,7 +139,7 @@ and optionally enable the cleaning of the artifacts (13)
 
 
 Crontab
-"""""""
+^^^^^^^
    
 Schedule the script in *cron*
 
@@ -159,7 +159,7 @@ Schedule the script in *cron*
 
 
 Email sent by cron
-""""""""""""""""""
+^^^^^^^^^^^^^^^^^^
 
 In our case the */etc/aliases* redirect the emails for *root* to the
 user *admin*. Cron will report the result of the scpript
@@ -182,7 +182,7 @@ script fails
 
 
 Project
-"""""""
+^^^^^^^
 
 Example of the project's directory without the artifacts. The
 artifacts will be created by *ansible-runner*
@@ -219,7 +219,7 @@ artifacts will be created by *ansible-runner*
 
 
 Playbook
-""""""""
+^^^^^^^^
 
 Example of a playbook used in the test
 
@@ -236,7 +236,7 @@ Example of a playbook used in the test
 
 
 Artifacts
-"""""""""
+^^^^^^^^^
 
 Example of the project's artifacts
 

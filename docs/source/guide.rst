@@ -209,18 +209,16 @@ make sure the playbook and the configuration is idempotent
 .. _ug_task_packages:
 .. include:: task-packages.rst
 .. toctree::
-   :name: ansible_runner_toc
+   :caption: Examples
+   :name: task-packages-examples
 
-   task-ansible-runner-ex1
-   task-ansible-runner-ex2
-   task-ansible-runner-ex3
+   task-packages-ex1
+   task-packages-ex2
 
-.. _ug_task_ansible_runner_ex1:
-.. include:: task-ansible-runner-ex1.rst
-.. _ug_task_ansible_runner_ex2:
-.. include:: task-ansible-runner-ex2.rst
-.. _ug_task_ansible_runner_ex3:
-.. include:: task-ansible-runner-ex3.rst
+.. _ug_task_packages_ex1:
+.. include:: task-packages-ex1.rst
+.. _ug_task_packages_ex2:
+.. include:: task-packages-ex2.rst
 
 
 .. _ug_vars:
@@ -285,3 +283,22 @@ playbook
    :emphasize-lines: 1
 
     shell> ansible-playbook ansible-runner.yml
+
+
+.. _ug_examples:
+
+*****************************
+Ansible Runner Usage Examples
+*****************************
+
+Cron
+====
+
+.. _ug_cron_example1:
+.. include:: cron-example1.rst
+
+Job events
+==========
+
+.. _ug_events_example1:
+.. include:: events-example1.rst

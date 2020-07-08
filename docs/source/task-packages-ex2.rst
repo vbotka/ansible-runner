@@ -1,5 +1,5 @@
 Example 2: Install ansible-runner in FreeBSD from the port
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------------------------
 
 Create a playbook
 

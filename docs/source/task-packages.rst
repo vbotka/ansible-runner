@@ -8,6 +8,3 @@ Synopsis
 
 .. seealso::
    * Annotated Source code :ref:`as_packages.yml`
-
-Examples
---------
