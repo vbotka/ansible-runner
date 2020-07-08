@@ -1,6 +1,12 @@
 Example 3: Run Ansible playbooks in cron
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. contents::
+   :local:
+
+Run ssh-agent
+"""""""""""""
+
 ``ssh-agent`` is needed to provide the ssh connection plugin with the
 password to the private key, when used. The script below is executed
 by the command interpreter for login shells
@@ -23,7 +29,7 @@ by the command interpreter for login shells
    fi
 
 
-and wiill start ``ssh-agent`` on login and prepare *SSH_ENV* (5)
+and will start ``ssh-agent`` on login and prepare *SSH_ENV* (5)
 
 .. code-block:: sh
    :linenos:
@@ -62,9 +68,14 @@ Example of *.ssh/environment* created by *ssh-agent*
 
 
 .. seealso::
-   * `Start ssh-agent on login <https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login>`_
+   * `Start ssh-agent on login - stackoverflow.com <https://stackoverflow.com/questions/18880024/start-ssh-agent-on-login>`_
+   * `SSH Quick-Start Guide - FreeBSD handbook <https://www.freebsd.org/doc/en_US.ISO8859-1/articles/committers-guide/ssh.guide.html>`_
+   * `Single Sign-On using SSH - ssh.com <https://www.ssh.com/ssh/agent>`_
 
 
+Wrapper ansible-runner
+""""""""""""""""""""""
+     
 Wrapper of *ansible-runner* will source *.ssh/environment* (9) and run
 the *playbook* from the *project* (10)
 
@@ -72,7 +83,7 @@ the *playbook* from the *project* (10)
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/bin/arwrapper.sh
+   cntrlr> cat /home/admin/bin/arwrapper.bash
    #!/bin/bash
    runner=$HOME/bin/ansible-runner
    project=$HOME/.ansible/runner/$2
@@ -82,18 +93,20 @@ the *playbook* from the *project* (10)
           echo $(date '+%Y-%m-%d %H:%M:%S') $0
           source $HOME/.ssh/environment
           $runner run $project -p $playbook
-          exit 0
           ;;
        clean)
           rm -rf $project/artifacts
-          exit 0
           ;;
        *)
           printf "$0: run|clean project [playbook]\n"
           exit 1
           ;;
    esac
+   exit
 
+
+Command for cron
+""""""""""""""""
 
 The script below will use *arwrapper.sh* (9) to run the playbook
 *pb-01.yml* (7) in the projects *test_01, test_02,* and *test_03*
@@ -105,25 +118,29 @@ and optionally enable the cleaning of the artifacts (13)
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/bin/ansible-cron-test.sh
+   cntrlr> cat /home/admin/bin/ansible-cron-test.bash
    #!/bin/bash
-   marker=$(printf "%75s" | sed "s/ /./g")
+   marker=$(printf "%80s" | sed "s/ /./g")
    rc=0
-   cmd=$HOME/bin/arwrapper.sh
+   cmd=$HOME/bin/arwrapper.bash
    projects="test_01 test_02 test_03"
    playbook=pb-01.yml
    for project in ${projects[@]}; do
-       if ! out=$($cmd run $project $playbook); then
-           rc=1
-           printf "[ERR] $out\n$marker\n"
-       else
-           # $cmd clean $project
+       out=$($cmd run $project $playbook 2>&1)
+       if [ $? -eq 0 ]; then
            printf "[OK]  $project $playbook PASSED\n"
+           # $cmd clean $project
+       else
+           printf "[ERR] $out\n$marker\n"
+           rc=1
        fi
    done
    exit $rc
 
 
+Crontab
+"""""""
+   
 Schedule the script in *cron*
 
 .. code-block:: sh
@@ -136,6 +153,13 @@ Schedule the script in *cron*
    #Ansible: Ansible runner daily test
    50 20 * * * $HOME/bin/ansible-cron-test.sh
 
+.. seealso::
+   * Ansible role's task `FreeBSD postinstall cron.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/cron.yml>`_
+   * Ansible role's task `Linux postinstall cron.yml <https://github.com/vbotka/ansible-linux-postinstall/blob/master/tasks/cron.yml>`_
+
+
+Email sent by cron
+""""""""""""""""""
 
 In our case the */etc/aliases* redirect the emails for *root* to the
 user *admin*. Cron will report the result of the scpript
@@ -157,13 +181,16 @@ script fails
    [OK]  test_03 pb-01.yml PASSED
 
 
+Project
+"""""""
+
 Example of the project's directory without the artifacts. The
 artifacts will be created by *ansible-runner*
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrlr> tree /home/vlado/.ansible/runner/test_01
+   cntrlr> tree /home/admin/.ansible/runner/test_01
    /home/admin/.ansible/runner/test_01
    ├── env
    ├── inventory
@@ -175,10 +202,41 @@ artifacts will be created by *ansible-runner*
        └── pb-01.yml
 
 
+.. note:: It's necesary to provide *ansible-playbook* wiht the *vault
+   password* if any data were encrypted. Use `env/cmdline
+   <https://ansible-runner.readthedocs.io/en/latest/intro.html#env-cmdline>`_. For
+   example
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+   cntrl> cat /home/admin/.ansible/runner/test_01/env/cmdline
+   --vault-password-file $HOME/.vault-psswd
+
 .. seealso::
    * `Runner Input Directory Hierarchy <https://ansible-runner.readthedocs.io/en/latest/intro.html#runner-input-directory-hierarchy>`_
    * Example playbook how to create projects `pb-create-runner-private.yml <https://github.com/vbotka/ansible-ansible/blob/master/contrib/workbench/pb-create-runner-private.yml>`_
 
+
+Playbook
+""""""""
+
+Example of a playbook used in the test
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+   cntrlr> cat /home/admin/.ansible/runner/test_01/project/pb-01.yml 
+   - hosts: test_01
+     remote_user: admin
+     gather_facts: no
+     tasks:
+       - debug:
+           msg: TEST
+
+
+Artifacts
+"""""""""
 
 Example of the project's artifacts
 
@@ -205,17 +263,3 @@ Example of the project's artifacts
 .. seealso::
    * `Runner Artifacts Directory Hierarchy <https://ansible-runner.readthedocs.io/en/latest/intro.html#runner-artifacts-directory-hierarchy>`_
    * `ansible_lib: al_runner_events <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_runner_events.yml>`_
-
-
-Example of a playbook used in the test
-
-.. code-block:: sh
-   :emphasize-lines: 1
-
-   cntrlr> cat /home/admin/.ansible/runner/test_01/project/pb-01.yml 
-   - hosts: test_01
-     remote_user: admin
-     gather_facts: no
-     tasks:
-       - debug:
-           msg: TEST
