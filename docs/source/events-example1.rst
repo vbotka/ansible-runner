@@ -40,7 +40,7 @@ Then the cron task in the example *Cron: Example 1* will fail and
    Subject: Cron <admin@cntrlr> $HOME/bin/ansible-cron-test.bash
 
    [OK]  test_01 pb-01.yml PASSED
-   [ERR] 2020-07-08 13:27:03 /home/admin/bin/arwrapper.sh
+   [ERR] 2020-07-08 13:27:03 /home/admin/bin/arwrapper.bash
 
    PLAY [test_02] **************************************************************
 
