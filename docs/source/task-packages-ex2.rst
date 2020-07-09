@@ -1,5 +1,5 @@
-Example 2: Install ansible-runner in FreeBSD from the port
-----------------------------------------------------------
+Example 2: Install ansible-runner in FreeBSD from port
+------------------------------------------------------
 
 Create a playbook
 
@@ -36,9 +36,8 @@ Show ansible-runner package installed by pip for admin
 .. code-block:: yaml
    :emphasize-lines: 1,4
 
-    <TBD>
    shell> whoami
-
+    <TBD>
 
    shell> which ansible-runner
    ansible-runner               1.4.6
