@@ -151,7 +151,7 @@ Schedule the script in *cron*
    cntrlr> crontab -l
    MAILTO=admin
    #Ansible: Ansible runner daily test
-   50 20 * * * $HOME/bin/ansible-cron-test.sh
+   50 20 * * * $HOME/bin/ansible-cron-test.bash
 
 .. seealso::
    * Ansible role's task `FreeBSD postinstall cron.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/master/tasks/cron.yml>`_
@@ -163,7 +163,7 @@ Email sent by cron
 
 In our case the */etc/aliases* redirect the emails for *root* to the
 user *admin*. Cron will report the result of the scpript
-*ansible-cron-test.sh*. If you want to receive email on a failure only
+*ansible-cron-test.bash*. If you want to receive email on a failure only
 remove the *[OK]* report from the script and optionally clean the
 *artifacts*. The *artifacts* will be available for a review if the
 script fails
@@ -174,7 +174,7 @@ script fails
    Date: Tue,  7 Jul 2020 20:50:06 +0200 (CEST)
    From: Cron Daemon <root@cntrlr.example.com>
    To: admin@cntrlr.example.com
-   Subject: Cron <admin@cntrlr> $HOME/bin/ansible-cron-test.sh
+   Subject: Cron <admin@cntrlr> $HOME/bin/ansible-cron-test.bash
 
    [OK]  test_01 pb-01.yml PASSED
    [OK]  test_02 pb-01.yml PASSED

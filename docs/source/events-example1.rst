@@ -37,7 +37,7 @@ Then the cron task in the example *Cron: Example 1* will fail and
    Date: Wed,  8 Jul 2020 13:27:07 +0200 (CEST)
    From: Cron Daemon <root@cntrlr.example.com>
    To: admin@cntrlr.example.com
-   Subject: Cron <admin@cntrlr> $HOME/bin/ansible-cron-test.sh
+   Subject: Cron <admin@cntrlr> $HOME/bin/ansible-cron-test.bash
 
    [OK]  test_01 pb-01.yml PASSED
    [ERR] 2020-07-08 13:27:03 /home/admin/bin/arwrapper.sh
