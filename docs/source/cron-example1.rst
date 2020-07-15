@@ -73,11 +73,43 @@ Example of *.ssh/environment* created by *ssh-agent*
    * `Single Sign-On using SSH - ssh.com <https://www.ssh.com/ssh/agent>`_
 
 
+Run gpg-agent
+^^^^^^^^^^^^^
+
+`Start gpg-agent
+<https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html>`_
+manually by running ``gpg``. ``gpg-agent`` is needed to provide
+``gpg`` with the password to the private gpg key, when used. For
+example, to sign or encrypt emails, or to configure user's passwords
+with help of the ``passwordstore``. The configuration below enables
+``gpg-agent`` also within a ssh session. In particular, *no-grab* (2)
+allows cut&paste, *no-allow-external-cache* (3) disables any keyrings
+and *pinentry-curses* (4) asks for the password in the terminal
+instead of default *pinentry* asking in the remote (in the case of
+ssh) desktop window. The time to live *ttl* (5,6) is set to 24
+hours. This way, it's not necessary to re-enter the password when the
+``cron``, which invokes the play with ``gpg-agent``, is run daily.
+
+.. code-block:: sh
+   :linenos:
+   :emphasize-lines: 1
+
+   cntrlr> cat ~/.gnupg/gpg-agent.conf
+   no-grab
+   no-allow-external-cache
+   pinentry-program /usr/bin/pinentry-curses
+   default-cache-ttl 86400
+   max-cache-ttl 86400
+
+.. seealso::
+   * `Ansible role linux_postinstall <https://galaxy.ansible.com/vbotka/linux_postinstall>`_ task `gpg.yml <https://github.com/vbotka/ansible-linux-postinstall/blob/master/tasks/gpg.yml>`_
+
+
 Wrapper ansible-runner
 ^^^^^^^^^^^^^^^^^^^^^^
      
-Wrapper of *ansible-runner* will source *.ssh/environment* (9) and run
-the *playbook* from the *project* (10)
+Wrapper of *ansible-runner* will source *.ssh/environment* (14) and run
+the *playbook* from the *project* (15)
 
 .. code-block:: sh
    :linenos:
@@ -85,22 +117,27 @@ the *playbook* from the *project* (10)
 
    cntrlr> cat /home/admin/bin/arwrapper.bash
    #!/bin/bash
+
    runner=$HOME/bin/ansible-runner
    project=$HOME/.ansible/runner/$2
    playbook=${3:-all.yml}
+
    case "$1" in
+       test)
+           echo $(date '+%Y-%m-%d %H:%M:%S') $runner run $project -p $playbook
+           ;;
        run)
-          echo $(date '+%Y-%m-%d %H:%M:%S') $0
-          source $HOME/.ssh/environment
-          $runner run $project -p $playbook
-          ;;
+           echo $(date '+%Y-%m-%d %H:%M:%S') $0
+           source $HOME/.ssh/environment
+           $runner run $project -p $playbook
+           ;;
        clean)
-          rm -rf $project/artifacts
-          ;;
+           rm -rf $project/artifacts
+           ;;
        *)
-          printf "$0: run|clean project [playbook]\n"
-          exit 1
-          ;;
+           printf "$0: run|clean|test project [playbook]\n"
+           exit 1
+           ;;
    esac
    exit
 
@@ -108,11 +145,11 @@ the *playbook* from the *project* (10)
 Command for cron
 ^^^^^^^^^^^^^^^^
 
-The script below will use *arwrapper.sh* (9) to run the playbook
-*pb-01.yml* (7) in the projects *test_01, test_02,* and *test_03*
-(6). If the command (9) succeeds the script will print *[OK]* report
-(14). If you don't want to receive email on success remove this line
-and optionally enable the cleaning of the artifacts (13)
+The script below will use *arwrapper.bash* (5) to run the playbook
+*pb-01.yml* in the projects *test_01, test_02,* and *test_03*
+(11-13). If the command (18) succeeds the script will print *[OK]*
+report (23). If you don't want to receive email on success remove this
+line. Optionally enable/disable the cleaning of the artifacts (24).
 
 .. code-block:: sh
    :linenos:
@@ -120,22 +157,35 @@ and optionally enable the cleaning of the artifacts (13)
 
    cntrlr> cat /home/admin/bin/ansible-cron-test.bash
    #!/bin/bash
+
    marker=$(printf "%80s" | sed "s/ /./g")
-   rc=0
    cmd=$HOME/bin/arwrapper.bash
-   projects="test_01 test_02 test_03"
-   playbook=pb-01.yml
-   for project in ${projects[@]}; do
-       out=$($cmd run $project $playbook 2>&1)
-       if [ $? -eq 0 ]; then
-           printf "[OK]  $project $playbook PASSED\n"
-           # $cmd clean $project
-       else
-           printf "[ERR] $out\n$marker\n"
-           rc=1
-       fi
-   done
-   exit $rc
+   subcmd=${1:-run}
+   rc=0
+
+   typeset -A projects
+   projects=(
+       [test_01]="pb-01.yml"
+       [test_02]="pb-01.yml"
+       [test_03]="pb-01.yml"
+   )
+
+   for project in "${!projects[@]}"; do
+       for playbook in ${projects[$project]}; do
+           out=$("$cmd" "$subcmd" "$project" "$playbook" 2>&1)
+           if [ "$?" -eq "0" ]; then
+               if [ "$subcmd" = "test" ]; then
+                   printf "[DRY] $out\n"
+               fi
+               printf "[OK]  "$project" "$playbook" PASSED\n"
+               $cmd clean $project
+           else
+               printf "[ERR] $out\n$marker\n"
+               rc=1
+           fi
+       done
+    done
+    exit $rc
 
 
 Crontab
@@ -215,7 +265,7 @@ artifacts will be created by *ansible-runner*
 
 .. seealso::
    * `Runner Input Directory Hierarchy <https://ansible-runner.readthedocs.io/en/latest/intro.html#runner-input-directory-hierarchy>`_
-   * Example playbook how to create projects `pb-create-runner-private.yml <https://github.com/vbotka/ansible-ansible/blob/master/contrib/workbench/pb-create-runner-private.yml>`_
+   * Example playbook how to create projects `pb_create_runner_private.yml <https://github.com/vbotka/ansible-ansible/blob/master/contrib/workbench/pb_create_runner_private.yml>`_
 
 
 Playbook
