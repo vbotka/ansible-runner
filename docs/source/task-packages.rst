@@ -1,5 +1,5 @@
-Ansible Runner packages
-=======================
+Install ansible-runner
+======================
 
 Synopsis
 --------
@@ -8,3 +8,4 @@ Synopsis
 
 .. seealso::
    * Annotated Source code :ref:`as_packages.yml`
+   * Annotated Source code :ref:`as_pip.yml`

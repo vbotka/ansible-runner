@@ -4,8 +4,7 @@
 
 [Ansible role](https://galaxy.ansible.com/vbotka/ansible_runner/). Install and configure [Ansible Runner](https://github.com/ansible/ansible-runner).
 
-
-[Documentation at readthedocs.io](https://ansible-runner-role.readthedocs.io) [[PDF 191k](https://github.com/vbotka/ansible-runner/blob/master/ansible-runner-role.pdf)]
+[Documentation at readthedocs.io](https://ansible-runner-role.readthedocs.io)
 
 Feel free to [share your feedback and report issues](https://github.com/vbotka/ansible-runner/issues). Contributions are welcome.
 

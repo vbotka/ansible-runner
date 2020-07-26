@@ -5,7 +5,7 @@ ANSIBLE_CALLBACK_PLUGINS in envvars is not working. #219
 * Status: `Closed without fix <https://github.com/ansible/ansible-runner/issues/219#issuecomment-525795580>`_ Aug 2019
 
 
-It's not possbile to change Ansible callback
+It's not possible to change Ansible callback
 plugin. ``ansible-runner`` ignores environment variable
 ``ANSIBLE_STDOUT_CALLBACK`` and uses hardwired callback plugins (2,4). See
 `runner_config.py
@@ -21,7 +21,7 @@ plugin. ``ansible-runner`` ignores environment variable
        self.env['ANSIBLE_STDOUT_CALLBACK'] = 'awx_display'
 
 
-To test it, set the enironment variables of the project *test_02*
+To test it, set the environment variables of the project *test_02*
 
 .. code-block:: sh
    :emphasize-lines: 1

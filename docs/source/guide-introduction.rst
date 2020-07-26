@@ -2,7 +2,7 @@
 Introduction
 ************
 
-Run this role to install and configure Ansible Runner. Optionaly
+Run this role to install and configure Ansible Runner. Optionally
 configure cron to periodically run Ansible playbooks.
 
 * Ansible role: `ansible_runner <https://galaxy.ansible.com/vbotka/ansible_runner/>`_

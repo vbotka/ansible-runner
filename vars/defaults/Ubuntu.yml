@@ -1,0 +1,10 @@
+---
+# Ubuntu vars/defaults for ansible_runner
+
+ar_packages: "{{ ar_packages_ubuntu }}"
+ar_links: "{{ ar_links_ubuntu }}"
+ar_pip_executable: "{{ pip_executable_ubuntu }}"
+ar_pip_requirements: "{{ pip_requirements_ubuntu }}"
+
+# EOF
+...

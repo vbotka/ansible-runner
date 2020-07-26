@@ -38,7 +38,7 @@ and will start ``ssh-agent`` on login and prepare *SSH_ENV* (5)
    cntrlr> cat /home/admin/.bashrc_ssh
    SSH_ENV="$HOME/.ssh/environment"
    function start_agent {
-       echo "Initialising new SSH agent..."
+       echo "Initializing new SSH agent..."
        /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
        echo succeeded
        chmod 600 "${SSH_ENV}"
@@ -252,7 +252,7 @@ artifacts will be created by *ansible-runner*
        └── pb-01.yml
 
 
-.. note:: It's necesary to provide *ansible-playbook* wiht the *vault
+.. note:: It's necesary to provide *ansible-playbook* with the *vault
    password* if any data were encrypted. Use `env/cmdline
    <https://ansible-runner.readthedocs.io/en/latest/intro.html#env-cmdline>`_. For
    example

@@ -9,8 +9,16 @@
   tags: [ar_debug, always]
 
 - import_tasks: packages.yml
-  when: ar_install|bool
+  when: ar_pkg_install|bool
   tags: ar_packages
+
+- import_tasks: sanity.yml
+  when: ar_sanity|bool
+  tags: ar_sanity
+
+- import_tasks: pip.yml
+  when: ar_pip_install|bool
+  tags: ar_pip
 
 - import_tasks: links.yml
   tags: ar_links

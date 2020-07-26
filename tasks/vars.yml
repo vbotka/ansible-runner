@@ -1,9 +1,9 @@
 ---
 
 - name: "Declare ar_owner when undefined"
-  when: ar_owner is undefined
   set_fact:
     ar_owner: "{{ ansible_user_id }}"
+  when: ar_owner is undefined
 
 - name: "Default vars for {{ ansible_os_family }}
                           {{ ansible_distribution }}
@@ -14,8 +14,8 @@
         - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
-        - "defaults.yml"
-        - "default.yml"
+        - default.yml
+        - defaults.yml
       paths: "{{ role_path }}/vars/defaults"
 
 - name: "Custom vars for {{ ansible_os_family }}
@@ -27,8 +27,8 @@
         - "{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml"
         - "{{ ansible_distribution }}.yml"
         - "{{ ansible_os_family }}.yml"
-        - "defaults.yml"
-        - "default.yml"
+        - default.yml
+        - defaults.yml
       paths: "{{ role_path }}/vars"
 
 # EOF

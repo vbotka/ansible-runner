@@ -110,6 +110,46 @@ Description of the task.
     :emphasize-lines: 1,2
     :linenos:
 
+.. _as_pip.yml:
+
+pip.yml
+-------
+
+Synopsis: Configure pip.
+
+
+Description of the task.
+
+
+[`pip.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/pip.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/pip.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+.. _as_sanity.yml:
+
+sanity.yml
+----------
+
+Synopsis: Configure sanity.
+
+
+Description of the task.
+
+
+[`sanity.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/sanity.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/sanity.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
 .. _as_vars.yml:
 
 vars.yml

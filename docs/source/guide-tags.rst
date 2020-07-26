@@ -16,14 +16,16 @@ the tag ``ar_debug`` (when the debug is enabled ``ar_debug: true``)
 
     shell> ansible-playbook ansible-runner.yml -t ar_debug
 
-See what packages will be installed
+If the packages listed in ``ar_packages`` are available for the
+distribution enable it ``ar_pkg_install: true`` and see if the packages
+can be installed
 
 .. code-block:: sh
    :emphasize-lines: 1
 
     shell> ansible-playbook ansible-runner.yml -t ar_packages --check
 
-Install packages and exit the play
+Install the package and exit the play
 
 .. code-block:: sh
    :emphasize-lines: 1
