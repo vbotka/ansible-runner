@@ -3,7 +3,7 @@
 # FreeBSD
 - name: "packages: Install Ansible Runner FreeBSD packages"
   block:
-    - name: "packages: Install Ansible Runner packages FreeBSD"
+    - name: "packages: Install Ansible Runner FreeBSD packages"
       pkgng:
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
@@ -19,9 +19,9 @@
     - ansible_os_family == "FreeBSD"
     - freebsd_install_method|lower == "packages"
 
-- name: "packages: Install FreeBSD ports"
+- name: "packages: Install Ansible Runner FreeBSD ports"
   block:
-    - name: "packages: Install Ansible Runner ports FreeBSD"
+    - name: "packages: Install Ansible Runner FreeBSD ports"
       portinstall:
         name: "{{ item.name }}"
         use_packages: "{{ freebsd_use_packages }}"
@@ -39,9 +39,9 @@
     - freebsd_install_method|lower == "ports"
 
 # Linux
-- name: "packages: Install Ansible Runner packages Linux"
+- name: "packages: Install Ansible Runner Linux packages"
   block:
-    - name: "packages: Install Ansible Runner packages Linux"
+    - name: "packages: Install Ansible Runner Linux packages"
       package:
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
