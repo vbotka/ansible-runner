@@ -15,7 +15,7 @@ by the command interpreter for login shells
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/.profile
+   shell> cat /home/admin/.profile
    if [ -n "$BASH_VERSION" ]; then
        if [ -f "$HOME/.bashrc" ]; then
           . "$HOME/.bashrc"
@@ -35,7 +35,7 @@ and will start ``ssh-agent`` on login and prepare *SSH_ENV* (5)
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/.bashrc_ssh
+   shell> cat /home/admin/.bashrc_ssh
    SSH_ENV="$HOME/.ssh/environment"
    function start_agent {
        echo "Initializing new SSH agent..."
@@ -61,7 +61,7 @@ Example of *.ssh/environment* created by *ssh-agent*
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/.ssh/environment 
+   shell> cat /home/admin/.ssh/environment
    SSH_AUTH_SOCK=/tmp/ssh-8fUkZ7qOzVPs/agent.5214; export SSH_AUTH_SOCK;
    SSH_AGENT_PID=5216; export SSH_AGENT_PID;
    #echo Agent pid 5216;
@@ -94,7 +94,7 @@ hours. This way, it's not necessary to re-enter the password when the
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat ~/.gnupg/gpg-agent.conf
+   shell> cat ~/.gnupg/gpg-agent.conf
    no-grab
    no-allow-external-cache
    pinentry-program /usr/bin/pinentry-curses
@@ -108,39 +108,15 @@ hours. This way, it's not necessary to re-enter the password when the
 Wrapper ansible-runner
 ^^^^^^^^^^^^^^^^^^^^^^
      
-Wrapper of *ansible-runner* will source *.ssh/environment* (14) and run
-the *playbook* from the *project* (15)
+Wrapper of *ansible-runner* will source *.ssh/environment* (42) and run
+the *playbook* from the *project* (44)
 
-.. code-block:: sh
-   :linenos:
-   :emphasize-lines: 1
+[`arwrapper.bash <https://github.com/vbotka/ansible-runner/blob/master/contrib/arwrapper.bash>`_]
 
-   cntrlr> cat /home/admin/bin/arwrapper.bash
-   #!/bin/bash
-
-   runner=$HOME/bin/ansible-runner
-   project=$HOME/.ansible/runner/$2
-   playbook=${3:-all.yml}
-
-   case "$1" in
-       test)
-           echo $(date '+%Y-%m-%d %H:%M:%S') $runner run $project -p $playbook
-           ;;
-       run)
-           echo $(date '+%Y-%m-%d %H:%M:%S') $0
-           source $HOME/.ssh/environment
-           $runner run $project -p $playbook
-           ;;
-       clean)
-           rm -rf $project/artifacts
-           ;;
-       *)
-           printf "$0: run|clean|test project [playbook]\n"
-           exit 1
-           ;;
-   esac
-   exit
-
+.. literalinclude:: ../../contrib/arwrapper.bash
+    :language: sh
+    :linenos:
+    :emphasize-lines: 42,44
 
 Command for cron
 ^^^^^^^^^^^^^^^^
@@ -155,7 +131,7 @@ line. Optionally enable/disable the cleaning of the artifacts (24).
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/bin/ansible-cron-test.bash
+   shell> cat /home/admin/bin/ansible-cron-test.bash
    #!/bin/bash
 
    marker=$(printf "%80s" | sed "s/ /./g")
@@ -196,7 +172,7 @@ Schedule the script in *cron*
 .. code-block:: sh
    :emphasize-lines: 1,3
 
-   cntrlr> whoami
+   shell> whoami
    admin
    cntrlr> crontab -l
    MAILTO=admin
@@ -240,7 +216,7 @@ artifacts will be created by *ansible-runner*
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrlr> tree /home/admin/.ansible/runner/test_01
+   shell> tree /home/admin/.ansible/runner/test_01
    /home/admin/.ansible/runner/test_01
    ├── env
    ├── inventory
@@ -260,7 +236,7 @@ artifacts will be created by *ansible-runner*
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrl> cat /home/admin/.ansible/runner/test_01/env/cmdline
+   shell> cat /home/admin/.ansible/runner/test_01/env/cmdline
    --vault-password-file $HOME/.vault-psswd
 
 .. seealso::
@@ -276,7 +252,7 @@ Example of a playbook used in the test
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrlr> cat /home/admin/.ansible/runner/test_01/project/pb-01.yml 
+   shell> cat /home/admin/.ansible/runner/test_01/project/pb-01.yml
    - hosts: test_01
      remote_user: admin
      gather_facts: no
@@ -293,7 +269,7 @@ Example of the project's artifacts
 .. code-block:: sh
    :emphasize-lines: 1
 
-   cntrl> tree /home/admin/.ansible/runner/test_01/artifacts/
+   shell> tree /home/admin/.ansible/runner/test_01/artifacts/
    /home/admin/.ansible/runner/test_01/artifacts
    └── aaa5d36e-e8d4-432a-ab52-b69062c85311
        ├── command

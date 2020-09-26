@@ -63,6 +63,12 @@ User's guide
 .. _ug_events_events-example1:
 .. include:: events-example1.rst
 
+.. _ug_usage_status:
+.. include:: guide-usage-status.rst
+
+.. _ug_events_status-example1:
+.. include:: status-example1.rst
+
 .. _ug_troubleshooting:
 .. include:: guide-troubleshooting.rst
 

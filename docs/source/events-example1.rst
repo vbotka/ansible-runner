@@ -8,13 +8,13 @@ Example 1: List artifacts' job events
 Test negative result
 ^^^^^^^^^^^^^^^^^^^^
 
-Let's modify the playbook so that it'll fail. For example (8)
+Let's modify the playbook so that it will fail. For example (8)
 
 .. code-block:: yaml
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat ~/.ansible/runner/test_02/project/pb-01.yml
+   shell> cat ~/.ansible/runner/test_02/project/pb-01.yml
    - hosts: test_02
      remote_user: admin
      gather_facts: no
@@ -78,7 +78,7 @@ Let's take look at the artifacts of the failed project
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> tree ~/.ansible/runner/test_02/artifacts/
+   shell> tree ~/.ansible/runner/test_02/artifacts/
    /home/admin/.ansible/runner/test_02/artifacts/
    └── 0428ede5-40c2-48f9-b33d-b9d1a64609af
        ├── command
@@ -114,7 +114,7 @@ to modify *msg* (18) and display other attributes
    :linenos:
    :emphasize-lines: 1
 
-   cntrlr> cat ar-events.yml
+   shell> cat ar-events.yml
    - hosts: localhost
      gather_facts: false
    
@@ -156,7 +156,7 @@ The play below gives the list of the events
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   cntrlr> ansible-playbook ar-events.yml -t events | grep msg\":
+   shell> ansible-playbook ar-events.yml -t events | grep msg\":
        "msg": "1 playbook_on_start"
        "msg": "2 playbook_on_play_start"
        "msg": "3 playbook_on_task_start"
@@ -176,7 +176,7 @@ The next play displays the details of the failed event(s)
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   cntrlr> echo -e $(ansible-playbook ar-events.yml -t failed | grep msg\":)
+   shell> echo -e $(ansible-playbook ar-events.yml -t failed | grep msg\":)
        "msg": "fatal: [test_02]: FAILED! =>{
        \"changed\": true,
        \"cmd\": [\"/usr/bin/false\"],
