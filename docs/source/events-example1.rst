@@ -49,24 +49,24 @@ Then the cron task in the example *Cron: Example 1* will fail and
        "msg": "TEST"
        }
 
-       TASK [command] **********************************************************
-       fatal: [test_02.g2.netng.org]: FAILED! =>
-       {"changed": true,
-        "cmd": ["/usr/bin/false"],
-        "delta": "0:00:00.013809",
-        "end": "2020-07-08 +13:26:32.197207",
-	"msg": "non-zero return code",
-	"rc": 1,
-	"start": "2020-07-08 13:26:32.183398",
-	"stderr": "",
-	"stderr_lines": [],
-        "stdout": "",
-	"stdout_lines": []}
+   TASK [command] **********************************************************
+   fatal: [test_02]: FAILED! =>
+   {"changed": true,
+    "cmd": ["/usr/bin/false"],
+    "delta": "0:00:00.013809",
+    "end": "2020-07-08 +13:26:32.197207",
+    "msg": "non-zero return code",
+    "rc": 1,
+    "start": "2020-07-08 13:26:32.183398",
+    "stderr": "",
+    "stderr_lines": [],
+    "stdout": "",
+    "stdout_lines": []}
 
-       PLAY RECAP **************************************************************
-       test_02: ok=1 changed=0 unreachable=0 failed=1 skipped=0 rescued=0 ignored=0
-       .........................................................................
-       [OK]  test_03 pb-01.yml PASSED
+   PLAY RECAP **************************************************************
+   test_02: ok=1 changed=0 unreachable=0 failed=1 skipped=0 rescued=0 ignored=0
+   .........................................................................
+   [OK]  test_03 pb-01.yml PASSED
 
 
 Artifacts
