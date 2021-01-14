@@ -2,10 +2,11 @@ Ansible Runner
 ==============
 
 This `role <https://galaxy.ansible.com/vbotka/ansible_runner/>`_ and the
-documentation is work in progress. Please feel free to `share your
+documentation is work in progress. Feel free to `share your
 feedback and report issues
-<https://github.com/vbotka/ansible-runner/issues>`_. Contributions
-are welcome.
+<https://github.com/vbotka/ansible-runner/issues>`_.
+
+`Contributions are welcome <https://github.com/firstcontributions/first-contributions>`_.
 
 .. toctree::
    :maxdepth: 2
