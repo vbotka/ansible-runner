@@ -1,4 +1,6 @@
-Example 1: Handle custom status of playbook
+.. _ug_usage_example3_status:
+
+Example 3: Handle custom status of playbook
 -------------------------------------------
 
 .. contents::

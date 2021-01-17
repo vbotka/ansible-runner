@@ -2,11 +2,11 @@
 Playbook
 ********
 
-Below is a simple playbook that calls this role at a single host
+Below is a simple playbook that calls this role (10) at a single host
 srv.example.com (2)
 
 .. code-block:: bash
-   :emphasize-lines: 1
+   :emphasize-lines: 2,10
    :linenos:
 
    shell> cat ansible-runner.yml

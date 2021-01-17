@@ -26,7 +26,7 @@ Create variables in the file *host_vars/test_01/ansible-runner.yml*
 
 Install ansible-runner
     
-.. code-block:: yaml
+.. code-block:: sh
    :emphasize-lines: 1
 
     shell> ansible-playbook ansible-runner.yml

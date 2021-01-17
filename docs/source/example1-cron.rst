@@ -1,3 +1,5 @@
+.. _ug_usage_example1_cron:
+
 Example 1: Run Ansible playbooks in cron
 ----------------------------------------
 

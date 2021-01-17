@@ -1,3 +1,5 @@
+.. _ug_issues_example1:
+
 ANSIBLE_CALLBACK_PLUGINS in envvars is not working. #219
 --------------------------------------------------------
 
@@ -51,7 +53,7 @@ Prepare a playbook
 
 and test it
 
-.. code-block:: yaml
+.. code-block:: sh
    :emphasize-lines: 1,4,18
 
    shell> ansible-runner --version

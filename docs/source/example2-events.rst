@@ -1,4 +1,6 @@
-Example 1: List artifacts' job events
+.. _ug_usage_example2_events:
+
+Example 2: List artifacts' job events
 -------------------------------------
 
 .. contents::
@@ -30,7 +32,7 @@ Cron email on failure
 Then the cron task in the example *Cron: Example 1* will fail and
 *admin* will receive an email similar to this one
 
-.. code-block:: yaml
+.. code-block:: sh
    :linenos:
    :emphasize-lines: 1
 

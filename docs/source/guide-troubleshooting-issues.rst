@@ -1,5 +1,5 @@
 Commented issues
-================
+----------------
 
 There are `reported issues
 <https://github.com/ansible/ansible-runner/issues>`_ at GitHub. Some

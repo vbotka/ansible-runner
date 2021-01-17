@@ -1,8 +1,5 @@
 Install ansible-runner
-======================
-
-Synopsis
---------
+----------------------
 
 ``ansible-runner`` can be installed by ``pip`` or from distribution's packages, and ports.
 
