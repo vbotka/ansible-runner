@@ -10,7 +10,7 @@ feedback and report issues
 
 .. toctree::
    :maxdepth: 2
-   :caption: Table of Contents:
+   :caption: Table of Contents
 
    guide
    annotation
