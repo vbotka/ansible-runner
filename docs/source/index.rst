@@ -14,6 +14,7 @@ feedback and report issues
 
    guide
    annotation
+   collection-bsd
    copyright
    legalnotice
 
