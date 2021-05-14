@@ -4,7 +4,7 @@
 - name: "packages: Install Ansible Runner FreeBSD packages"
   block:
     - name: "packages: Install Ansible Runner FreeBSD packages"
-      pkgng:
+      community.general.pkgng:
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
       register: result
@@ -12,7 +12,7 @@
       retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
     - name: "packages: Debug FreeBSD packages"
-      debug:
+      ansible.builtin.debug:
         var: result
       when: ar_debug|bool
   when:
@@ -22,7 +22,7 @@
 - name: "packages: Install Ansible Runner FreeBSD ports"
   block:
     - name: "packages: Install Ansible Runner FreeBSD ports"
-      portinstall:
+      community.general.portinstall:
         name: "{{ item.name }}"
         use_packages: "{{ freebsd_use_packages }}"
       loop: "{{ ar_packages }}"
@@ -31,7 +31,7 @@
       retries: "{{ freebsd_install_retries }}"
       delay: "{{ freebsd_install_delay }}"
     - name: "packages: Debug FreeBSD ports"
-      debug:
+      ansible.builtin.debug:
         var: result
       when: ar_debug|bool
   when:
@@ -42,7 +42,7 @@
 - name: "packages: Install Ansible Runner Linux packages"
   block:
     - name: "packages: Install Ansible Runner Linux packages"
-      package:
+      ansible.builtin.package:
         name: "{{ item.name }}"
       loop: "{{ ar_packages }}"
       register: result
@@ -50,7 +50,7 @@
       retries: "{{ linux_install_retries }}"
       delay: "{{ linux_install_delay }}"
     - name: "packages: Debug Linux"
-      debug:
+      ansible.builtin.debug:
         var: result
       when: ar_debug|bool
   when:

@@ -22,4 +22,6 @@ galaxy_info:
     - freebsd
     - ubuntu
 dependencies: []
+collections:
+  - community.general
 ...
