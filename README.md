@@ -22,14 +22,11 @@ released versions in time and would report an error. For example:
 `IMPORTER101: Invalid platform: "FreeBSD-11.3", skipping.`
 
 
-## Requirements
+## Requirements and dependencies
 
-None.
+### Collections
 
-
-## Dependencies
-
-None.
+* community.general
 
 
 ## Role Variables
