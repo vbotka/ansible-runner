@@ -12,7 +12,7 @@ Synopsis: Main task.
 Import tasks if enabled.
 
 
-[`tasks/main.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/main.yml>`_]
+[`tasks/main.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/main.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -36,7 +36,7 @@ Synopsis: Configure vars.
 Description of the task.
 
 
-[`tasks/vars.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/vars.yml>`_]
+[`tasks/vars.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/vars.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -60,7 +60,7 @@ Synopsis: Configure debug.
 Description of the task.
 
 
-[`tasks/debug.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/debug.yml>`_]
+[`tasks/debug.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/debug.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -84,7 +84,7 @@ Synopsis: Configure packages.
 Description of the task.
 
 
-[`tasks/packages.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/packages.yml>`_]
+[`tasks/packages.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/packages.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -108,7 +108,7 @@ Synopsis: Configure sanity.
 Description of the task.
 
 
-[`tasks/sanity.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/sanity.yml>`_]
+[`tasks/sanity.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/sanity.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -132,7 +132,7 @@ Synopsis: Configure pip.
 Description of the task.
 
 
-[`tasks/pip.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/pip.yml>`_]
+[`tasks/pip.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/pip.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -156,7 +156,7 @@ Synopsis: Configure links.
 Description of the task.
 
 
-[`tasks/links.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/links.yml>`_]
+[`tasks/links.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/links.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -180,7 +180,7 @@ Synopsis: Configure config.
 Description of the task.
 
 
-[`tasks/config.yml <https://github.com/vbotka/ansible-freebsd-postinstall/blob/2.0-stable/tasks/config.yml>`_]
+[`tasks/config.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/config.yml>`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
