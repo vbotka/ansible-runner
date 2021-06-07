@@ -26,39 +26,14 @@ pip_install_delay: 5
 # Config
 ar_config: []
 
-# OS specific defaults
-ar_packages_debian:
-  - name: ansible-runner
-ar_packages_ubuntu:
-  - name: ansible-runner
-ar_packages_redhat:
-  - name: python-ansible-runner
-ar_packages_freebsd:
-  - name: sysutils/py-ansible-runner
+# Links
+ar_links: []
 
-ar_links_debian:
-  - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"
-    dest: "/home/{{ ar_owner }}/bin/ansible-runner"
-    force: true
-ar_links_ubuntu:
-  - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"
-    dest: "/home/{{ ar_owner }}/bin/ansible-runner"
-    force: true
-ar_links_redhat:
-  - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"
-    dest: "/home/{{ ar_owner }}/bin/ansible-runner"
-    force: true
-ar_links_freebsd: []
-
-pip_executable_debian: /usr/bin/pip3
-pip_executable_ubuntu: /usr/bin/pip3
-pip_executable_redhat: /usr/bin/pip3
-pip_executable_freebsd: /usr/local/bin/pip-3.6
-
-pip_requirements_debian: []
-pip_requirements_ubuntu: []
-pip_requirements_redhat: []
-pip_requirements_freebsd: []
+# Override OS specific variables. See tasks/vars.yml
+# ar_pip_executable_override: /usr/bin/pip4
+# ar_pip_packages_override:
+# - name: ansible-runner-devel
+# ar_pip_requirements_override: []
 
 # EOF
 ...

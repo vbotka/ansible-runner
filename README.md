@@ -31,11 +31,11 @@ released versions in time and would report an error. For example:
 
 ## Role Variables
 
-- Review default variables in *defaults/main.yml*
-- Review OS specific default varaibles in *vars/defaults/*
-- Review examples in *vars/main.yml*
+- See default variables in *defaults/main.yml*
+- See OS specific default varaibles in *vars/defaults/*
+- See examples in *vars/main.yml.samples*
 - Put OS specific custom variables into the directory *vars/*
-- Review *tasks/vars.yml* to learn about the precedence of the variables
+- See the precedence of the variables in */tasks/vars.yml*
 
 
 ### Variables
@@ -46,19 +46,19 @@ released versions in time and would report an error. For example:
 ar_install: true
 ```
 
-- By default use *pip* to install *ansible-runner* on Ubuntu and RH.
+- By default use *pip* to install *ansible-runner* on Ubuntu and RH
 
 ```
 ar_pip_install: true
 ```
 
-- By default use packages, or ports to install *ansible-runner* on FreeBSD.
+- Use packages, or ports to install *ansible-runner* on FreeBSD
 
 ```
 ar_pip_install: false
 ```
 
-- Set variable *ar_owner* to the user who will own the packages installed by pip.
+- Set variable *ar_owner* to the user who will own the packages installed by pip
 
 ```
 ar_owner: admin
@@ -79,7 +79,7 @@ pip:
   name: ...
 ```
 
-Review *tasks/packages.yml*
+See *tasks/packages.yml*
 
 
 ## Examples
