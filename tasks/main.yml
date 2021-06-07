@@ -1,29 +1,36 @@
 ---
 # tasks for ansible_runner
 
-- import_tasks: vars.yml
+- name: Import vars.yml
+  ansible.builtin.import_tasks: vars.yml
   tags: [ar_vars, always]
 
-- import_tasks: debug.yml
+- name: Import debug.yml
+  ansible.builtin.import_tasks: debug.yml
   when: ar_debug|bool
   tags: [ar_debug, always]
 
-- import_tasks: packages.yml
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
   when: ar_pkg_install|bool
   tags: ar_packages
 
-- import_tasks: sanity.yml
+- name: Import sanity.yml
+  ansible.builtin.import_tasks: sanity.yml
   when: ar_sanity|bool
   tags: ar_sanity
 
-- import_tasks: pip.yml
+- name: Import pip.yml
+  ansible.builtin.import_tasks: pip.yml
   when: ar_pip_install|bool
   tags: ar_pip
 
-- import_tasks: links.yml
+- name: Import links.yml
+  ansible.builtin.import_tasks: links.yml
   tags: ar_links
 
-- import_tasks: config.yml
+- name: Import config.yml
+  ansible.builtin.import_tasks: config.yml
   tags: ar_config
 
 # EOF
