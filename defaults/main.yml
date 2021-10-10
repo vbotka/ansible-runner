@@ -21,7 +21,7 @@ linux_install_delay: 5
 # pip
 pip_install_retries: 10
 pip_install_delay: 5
-# ar_pip_extraagrs: '--user'
+# ar_pip_extraagrs: '--user --upgrade'
 
 # Config
 ar_config: []

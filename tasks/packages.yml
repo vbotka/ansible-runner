@@ -5,8 +5,7 @@
   block:
     - name: "packages: Install Ansible Runner FreeBSD packages"
       community.general.pkgng:
-        name: "{{ item.name }}"
-      loop: "{{ ar_packages }}"
+        name: "{{ ar_packages|map(attribute='name')|list }}"
       register: result
       until: result is succeeded
       retries: "{{ freebsd_install_retries }}"
