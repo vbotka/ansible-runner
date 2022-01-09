@@ -136,7 +136,6 @@ line. Optionally enable/disable the cleaning of the artifacts (24).
    shell> cat /home/admin/bin/ansible-cron-test.bash
    #!/bin/bash
 
-   marker=$(printf "%80s" | sed "s/ /./g")
    cmd=$HOME/bin/arwrapper.bash
    subcmd=${1:-run}
    rc=0
@@ -153,12 +152,12 @@ line. Optionally enable/disable the cleaning of the artifacts (24).
            out=$("$cmd" "$subcmd" "$project" "$playbook" 2>&1)
            if [ "$?" -eq "0" ]; then
                if [ "$subcmd" = "test" ]; then
-                   printf "[DRY] $out\n"
+                   printf '%s\n' "[DRY] $out"
                fi
-               printf "[OK]  "$project" "$playbook" PASSED\n"
+               printf '%s\n' "[OK] "$project" "$playbook" PASSED"
                $cmd clean $project
            else
-               printf "[ERR] $out\n$marker\n"
+               printf '%s\n' "[ERR] $out"
                rc=1
            fi
        done
