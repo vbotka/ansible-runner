@@ -14,9 +14,18 @@
       ansible.builtin.debug:
         var: result
       when: ar_debug|bool
+  rescue:
+    - name: "packages: Rescue FreeBSD packages"
+      ansible.builtin.fail:
+        msg: |
+          [ERROR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task|to_yaml(indent=2)|indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result|to_yaml(indent=2)|indent(2) }}
   when:
-    - ansible_os_family == "FreeBSD"
-    - freebsd_install_method|lower == "packages"
+    - ansible_os_family == 'FreeBSD'
+    - freebsd_install_method|lower == 'packages'
 
 - name: "packages: Install Ansible Runner FreeBSD ports"
   block:
@@ -33,9 +42,18 @@
       ansible.builtin.debug:
         var: result
       when: ar_debug|bool
+  rescue:
+    - name: "packages: Rescue FreeBSD ports"
+      ansible.builtin.fail:
+        msg: |
+          [ERROR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task|to_yaml(indent=2)|indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result|to_yaml(indent=2)|indent(2) }}
   when:
-    - ansible_os_family == "FreeBSD"
-    - freebsd_install_method|lower == "ports"
+    - ansible_os_family == 'FreeBSD'
+    - freebsd_install_method|lower == 'ports'
 
 # Linux
 - name: "packages: Install Ansible Runner Linux packages"
@@ -52,8 +70,7 @@
       ansible.builtin.debug:
         var: result
       when: ar_debug|bool
-  when:
-    - ansible_os_family == "RedHat" or ansible_os_family == "Debian"
+  when: ansible_os_family in ar_supported_linux_family
 
 # EOF
 ...

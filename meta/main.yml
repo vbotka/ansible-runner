@@ -4,7 +4,7 @@ galaxy_info:
   role_name: ansible_runner
   author: Vladimir Botka
   description: Install and configure ansible-runner
-  company: https://botka.link
+  company: https://botka.info
   github_branch: master
   license: BSD
   min_ansible_version: "2.14"
@@ -18,10 +18,10 @@ galaxy_info:
         - focal
         - jammy
   galaxy_tags:
-    - ansible
-    - runner
     - freebsd
     - ubuntu
+    - ansible
+    - runner
 dependencies: []
 collections:
   - community.general
