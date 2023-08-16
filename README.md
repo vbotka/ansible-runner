@@ -1,4 +1,4 @@
-# ansible runner
+# Ansible runner
 
 [![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/ansible_runner)[![Build Status](https://app.travis-ci.com/vbotka/ansible-runner.svg?branch=master)](https://app.travis-ci.com/github/vbotka/ansible-runner)[![Documentation Status](https://readthedocs.org/projects/docs/badge/?version=latest)](https://ansible-runner-role.readthedocs.io/en/latest/)
 
@@ -19,7 +19,7 @@ This role has been developed and tested with
 
 This may be different from the platforms in Ansible Galaxy which does not offer all
 released versions in time and would report an error. For example:
-`IMPORTER101: Invalid platform: "FreeBSD-11.3", skipping.`
+`IMPORTER101: Invalid platform: "FreeBSD-13.2", skipping.`
 
 
 ## Requirements and dependencies
@@ -44,31 +44,27 @@ released versions in time and would report an error. For example:
 
 ### Variables
 
-- By default the OS specific packages will be installed
+- See *tasks/packages.yml*. The OS specific packages will be installed if you set
 
 ```
-ar_install: true
-```
-
-- By default use *pip* to install *ansible-runner* on Ubuntu and RH
-
-```
-ar_pip_install: true
-```
-
-- Use packages, or ports to install *ansible-runner* on FreeBSD
-
-```
+ar_pkg_install: true
 ar_pip_install: false
 ```
 
-- Set variable *ar_owner* to the user who will own the packages installed by pip
+- See *tasks/pip.yml*. Instead, you can use *pip* to install *ansible-runner* on LInux if you set
+
+```
+ar_pkg_install: false
+ar_pip_install: true
+```
+
+- When installing by pip, set variable *ar_owner* to the user who will own the packages installed by pip
 
 ```
 ar_owner: admin
 ```
 
-By default
+When undefined, the variable *ar_owner* will be set to *ansible_user_id* if defined. The existence of the variable *ar_owner* is tested by sanity.
 
 ```
 ar_owner: "{{ ansible_user_id }}"
@@ -83,7 +79,20 @@ pip:
   name: ...
 ```
 
-See *tasks/packages.yml*
+### WARNING: Do not manage system site-packages with pip
+
+By default the pip arguments are set
+
+```yaml
+ar_pip_extraagrs: '--user --upgrade'
+```
+
+See [Conclusions. The pip module isn't always idempotent #28952](https://github.com/ansible/ansible/issues/28952):
+
+  Managing system site-packages with Pip is not a good idea and will
+  probably break your OS. Those should be solely managed by the OS
+  package manager (apt/yum/dnf/etc.). If you want to manage env for
+  some software in Python, better use a virtualenv technology.
 
 
 ## Examples
@@ -104,4 +113,4 @@ See *tasks/packages.yml*
 
 ## Author Information
 
-[Vladimir Botka](https://botka.link)
+[Vladimir Botka](https://botka.info)

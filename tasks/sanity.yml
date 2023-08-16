@@ -1,8 +1,22 @@
 ---
 
-- name: "sanity: Debug"
-  ansible.builtin.debug:
-    msg: Not implemented yet.
+- name: "sanity: Test ar_owner is defined"
+  ansible.builtin.assert:
+    that: ar_owner is defined
+    fail_msg: "[ERROR] Variable ar_owner not defined."
+  when: ar_sanity_pip_owner_defined|bool
+
+- name: "sanity: Test {{ ar_pip_executable }} exists"
+  block:
+    - name: "sanity: Stat {{ ar_pip_executable }}"
+      ansible.builtin.stat:
+        path: "{{ ar_pip_executable }}"
+      register: result
+    - name: "sanity: Test {{ ar_pip_executable }} exists"
+      ansible.builtin.assert:
+        that: result.stat.exists
+        fail_msg: "[ERROR] {{ ar_pip_executable }} not exist."
+  when: ar_sanity_pip_exists|bool
 
 # [TODO]
 #

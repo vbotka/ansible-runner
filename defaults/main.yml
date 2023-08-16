@@ -5,7 +5,14 @@ ar_pkg_install: false
 ar_pip_install: false
 ar_debug: false
 ar_backup_conf: false
-ar_sanity: false
+
+ar_supported_linux_family: ['RedHat', 'Debian']
+ar_pip_extraagrs: '--user --upgrade'
+
+# Sanity
+ar_sanity: true
+ar_sanity_pip_owner_defined: "{{ ar_pip_install }}"
+ar_sanity_pip_exists: "{{ ar_pip_install }}"
 
 # FreeBSD
 freebsd_install_retries: 10
@@ -21,7 +28,6 @@ linux_install_delay: 5
 # pip
 pip_install_retries: 10
 pip_install_delay: 5
-# ar_pip_extraagrs: '--user --upgrade'
 
 # Config
 ar_config: []
