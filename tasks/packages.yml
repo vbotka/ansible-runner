@@ -70,6 +70,15 @@
       ansible.builtin.debug:
         var: result
       when: ar_debug|bool
+  rescue:
+    - name: "packages: Rescue Linux packages"
+      ansible.builtin.fail:
+        msg: |
+          [ERROR] task {{ ansible_failed_task.name }} failed.
+          ansible_failed_task:
+            {{ ansible_failed_task|to_yaml(indent=2)|indent(2) }}
+          ansible_failed_result:
+            {{ ansible_failed_result|to_yaml(indent=2)|indent(2) }}
   when: ansible_os_family in ar_supported_linux_family
 
 # EOF
