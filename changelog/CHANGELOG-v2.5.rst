@@ -5,7 +5,7 @@ vbotka.ansible_runner 2.5 Release Notes
 .. contents:: Topics
 
 
-2.5.2
+2.5.3
 =====
 
 Release Summary
