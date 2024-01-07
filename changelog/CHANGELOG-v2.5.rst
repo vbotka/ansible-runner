@@ -19,6 +19,7 @@ Major Changes
 Minor Changes
 -------------
 * Update docs
+* Update README
 
 Bugfixes
 --------

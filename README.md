@@ -17,10 +17,6 @@ This role has been developed and tested with
 * [Ubuntu Supported Releases](http://releases.ubuntu.com/)
 * [FreeBSD Supported Production Releases](https://www.freebsd.org/releases/)
 
-This may be different from the platforms in Ansible Galaxy which does not offer all
-released versions in time and would report an error. For example:
-`IMPORTER101: Invalid platform: "FreeBSD-13.2", skipping.`
-
 
 ## Requirements and dependencies
 
@@ -44,35 +40,40 @@ released versions in time and would report an error. For example:
 
 ### Variables
 
-- See *tasks/packages.yml*. The OS specific packages will be installed if you set
+* See *tasks/packages.yml*. The OS specific packages will be installed
+  if you set
 
-```
+```yaml
 ar_pkg_install: true
 ar_pip_install: false
 ```
 
-- See *tasks/pip.yml*. Instead, you can use *pip* to install *ansible-runner* on LInux if you set
+* See *tasks/pip.yml*. Instead, you can use *pip* to install
+  *ansible-runner* on Linux if you set
 
-```
+```yaml
 ar_pkg_install: false
 ar_pip_install: true
 ```
 
-- When installing by pip, set variable *ar_owner* to the user who will own the packages installed by pip
+* When installing by pip, set variable *ar_owner* to the user who will
+  own the packages installed by pip
 
-```
+```yaml
 ar_owner: admin
 ```
 
-When undefined, the variable *ar_owner* will be set to *ansible_user_id* if defined. The existence of the variable *ar_owner* is tested by sanity.
+When undefined, the variable *ar_owner* will be set to
+*ansible_user_id* if defined. The existence of the variable *ar_owner*
+is tested by sanity.
 
-```
+```yaml
 ar_owner: "{{ ansible_user_id }}"
 ```
 
 The *pip* installation task will run
 
-```
+```yaml
 become_user: "{{ ar_owner }}"
 become: true
 pip:
