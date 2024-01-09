@@ -17,10 +17,12 @@ Install the library ::
 
     shell> ansible-galaxy role install vbotka.ansible_lib
 
-Install the collection ::
+and install the collection if necessary ::
 
     shell> ansible-galaxy collection install community.general
 
 .. seealso::
-   * To install specific versions from various sources see `Installing content <https://galaxy.ansible.com/docs/using/installing.html>`_.
+
+   * To install specific versions from various sources see `Installing a specific version of a role <https://docs.ansible.com/ansible/latest/galaxy/user_guide.html#installing-a-specific-version-of-a-role>`_.
+
    * Take a look at other roles ``shell> ansible-galaxy search --author=vbotka``

@@ -15,10 +15,14 @@ configuration
 .. code-block:: sh
    :emphasize-lines: 1
 
-   shell> ansible-playbook ansible-runner.yml -e 'ar_debug=true'
+   shell> ansible-playbook ansible-runner.yml -e ar_debug=true
 
-.. note:: The debug output of this role is optimized for the **yaml**
-   callback plugin. Set this plugin for example in the environment
+.. note::
+
+   The debug output of this role is optimized for the **yaml**
+   callback plugin. For example, set this plugin in the environment
    ``shell> export ANSIBLE_STDOUT_CALLBACK=yaml``.
 
-.. seealso:: * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
+.. seealso::
+
+   * `Playbook Debugger <https://docs.ansible.com/ansible/latest/user_guide/playbooks_debugger.html>`_
