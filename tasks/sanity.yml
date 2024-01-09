@@ -1,5 +1,11 @@
 ---
 
+- name: "sanity: Test ar_pip_install and ar_pkg_install mutually exclusive"
+  ansible.builtin.assert:
+    that: not (ar_pip_install and ar_pkg_install)
+    fail_msg: "[ERROR] ar_pip_install and ar_pkg_install are mutually exclusive"
+  when: ar_sanity_pip_exclusive|bool
+
 - name: "sanity: Test ar_owner is defined if ar_pip_install"
   ansible.builtin.assert:
     that: ar_owner is defined

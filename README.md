@@ -48,7 +48,9 @@ ar_pkg_install: true
 ar_pip_install: false
 ```
 
-* See *tasks/pip.yml*. Instead, you can use *pip* to install *ansible-runner*
+* See *tasks/pip.yml*. Instead, you can use *pip* to install
+  *ansible-runner*. *ar_pkg_install* and *ar_pip_install* are mutually
+  exclusive
 
 ```yaml
 ar_pkg_install: false

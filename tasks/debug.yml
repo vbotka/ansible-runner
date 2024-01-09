@@ -22,6 +22,7 @@
 
       ar_supported_linux_family: {{ ar_supported_linux_family }}
       ar_sanity: {{ ar_sanity }}
+      ar_sanity_pip_exclusive: {{ ar_sanity_pip_exclusive }}
       ar_sanity_pip_owner_defined: {{ ar_sanity_pip_owner_defined }}
       ar_sanity_pip_exists: {{ ar_sanity_pip_exists }}
       ar_backup_conf: {{ ar_backup_conf }}

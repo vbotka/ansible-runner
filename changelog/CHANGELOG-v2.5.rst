@@ -18,10 +18,12 @@ Major Changes
 * Update tasks/packages.yml
 * Update tasks/pip.yml; Muted pip always reporting changed in check
   mode.
-* Sanity checking ar_owner and ar_pip_executable limited to
-  ar_pip_install
 * Update tasks/vars.yml; Robust defaults of ar_owner
 * Update vars/defaults; Set ar_packages according ar_pip_install
+* Sanity checking ar_owner and ar_pip_executable limited to
+  ar_pip_install
+* Add sanity check ar_pip_install and ar_pkg_install are mutually
+  exclusive
 
 Minor Changes
 -------------
