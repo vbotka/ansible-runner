@@ -32,7 +32,7 @@ This role has been developed and tested with
 ## Role Variables
 
 - See default variables in *defaults/main.yml*
-- See OS specific default varaibles in *vars/defaults/*
+- See OS specific default variables in *vars/defaults/*
 - See examples in *vars/main.yml.samples*
 - Put OS specific custom variables into the directory *vars/*
 - See the precedence of the variables in */tasks/vars.yml*
@@ -48,8 +48,7 @@ ar_pkg_install: true
 ar_pip_install: false
 ```
 
-* See *tasks/pip.yml*. Instead, you can use *pip* to install
-  *ansible-runner* on Linux if you set
+* See *tasks/pip.yml*. Instead, you can use *pip* to install *ansible-runner*
 
 ```yaml
 ar_pkg_install: false
@@ -57,18 +56,18 @@ ar_pip_install: true
 ```
 
 * When installing by pip, set variable *ar_owner* to the user who will
-  own the packages installed by pip
+  own the packages. For example,
 
 ```yaml
 ar_owner: admin
 ```
 
-When undefined, the variable *ar_owner* will be set to
-*ansible_user_id* if defined. The existence of the variable *ar_owner*
-is tested by sanity.
+When undefined, not escalated *setup* (become=false) will gather
+subset *user* and the variable *ar_owner* will be set. See
+tasks/vars.yml
 
 ```yaml
-ar_owner: "{{ ansible_user_id }}"
+ar_owner: "{{ ansible_user|default(ansible_user_id) }}"
 ```
 
 The *pip* installation task will run

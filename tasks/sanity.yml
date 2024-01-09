@@ -1,25 +1,31 @@
 ---
 
-- name: "sanity: Test ar_owner is defined"
+- name: "sanity: Test ar_owner is defined if ar_pip_install"
   ansible.builtin.assert:
     that: ar_owner is defined
-    fail_msg: "[ERROR] Variable ar_owner not defined."
-  when: ar_sanity_pip_owner_defined|bool
+    fail_msg: "[ERROR] Variable ar_owner required for pip."
+  when:
+    - ar_sanity_pip_owner_defined|bool
+    - ar_pip_install|bool
 
-- name: "sanity: Test {{ ar_pip_executable }} exists"
+- name: Test ar_pip_executable exists if ar_pip_install
   block:
+
     - name: "sanity: Stat {{ ar_pip_executable }}"
       ansible.builtin.stat:
         path: "{{ ar_pip_executable }}"
       register: result
-    - name: "sanity: Test {{ ar_pip_executable }} exists"
+
+    - name: "sanity: Test {{ ar_pip_executable }} exists if ar_pip_install"
       ansible.builtin.assert:
         that: result.stat.exists
-        fail_msg: "[ERROR] {{ ar_pip_executable }} not exist."
-  when: ar_sanity_pip_exists|bool
+        fail_msg: "[ERROR] {{ ar_pip_executable }} required for pip."
+
+  when:
+    - ar_sanity_pip_exists|bool
+    - ar_pip_install|bool
 
 # [TODO]
-#
 # when: ar_pip_install exist: python3-setuptools, python3-pip
 
 # EOF

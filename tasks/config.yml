@@ -1,6 +1,6 @@
 ---
 
-- name: "config: configure ansible-runner"
+- name: "config: Configure ansible-runner"
   ansible.builtin.debug:
     msg: No config
   when: ar_debug|bool
