@@ -2,29 +2,52 @@
 Best practice
 *************
 
-Display the variables for debug if needed. Then disable this task
-``ar_debug: false`` to speedup the playbook
+Test syntax
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-   shell> ansible-playbook ansible-runner.yml -t ar_debug
+   shell> ansible-playbook pb.yml --syntax-check
 
-Install packages. Then disable this task ``ar_pkg_install: false`` to speedup the playbook
+
+Display the variables. Then disable this task ``ar_debug: false`` to
+speedup the playbook
 
 .. code-block:: sh
-   :emphasize-lines: 1-2
+   :emphasize-lines: 1
 
-   shell> ansible-playbook ansible-runner.yml -t ar_packages \
-                                     -e 'ar_pkg_install=true'
+   shell> ansible-playbook pb.yml -t ar_debug -e ar_debug=true
+
+
+Dry-run and display changes
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+   shell> ansible-playbook pb.yml --check --diff
+
+
+Install distribution packages
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+   shell> ansible-playbook pb.yml -t ar_packages -e ar_pkg_install=true
+
+
+, or install PyPI packages
+
+.. code-block:: sh
+   :emphasize-lines: 1
+
+   shell> ansible-playbook pb.yml -t ar_pip -e ar_pip_install=true
 
 The role and the configuration data in the examples are
 idempotent. Once the installation and configuration have passed there
 should be no changes reported by *ansible-playbook* when running the
-playbook repeatedly. To speedup the playbook, disable both debug, and
-install
+playbook repeatedly.
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml
+    shell> ansible-playbook pb.yml

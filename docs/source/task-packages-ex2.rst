@@ -6,7 +6,7 @@ Create a playbook
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   shell> cat ansible-runner.yml
+   shell> cat pb.yml
    - hosts: test_01
      become: true
      roles:
@@ -29,22 +29,21 @@ Install ansible-runner
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml
+    shell> ansible-playbook pb.yml
     ...
-    TASK [vbotka.ansible_runner : packages: Install Ansible Runner ports FreeBSD]
-    changed: [test_01] => (item={'name': 'sysutils/py-ansible-runner'})
+    TASK [vbotka.ansible_runner : packages: Install Ansible Runner FreeBSD ports]
+    changed: [test_01] => (item=sysutils/py-ansible-runner)
 
 Show ansible-runner package was installed
     
 .. code-block:: yaml
-   :emphasize-lines: 1,4,8
+   :emphasize-lines: 1,4,7
 
    shell> whoami
    admin
 
    shell> pkg info | grep ansible-runner
-   py27-ansible-runner-1.3.3      Extensible embeddable ansible job runner
-   py36-ansible-runner-1.3.3      Extensible embeddable ansible job runner
+   py39-ansible-runner-2.3.2      Extensible embeddable ansible job runner
    
    shell> which ansible-runner
    /usr/local/bin/ansible-runner

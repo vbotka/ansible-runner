@@ -6,7 +6,7 @@ Create a playbook
 .. code-block:: yaml
    :emphasize-lines: 1
 
-   shell> cat ansible-runner.yml
+   shell> cat pb.yml
    - hosts: test_01
      become: true
      roles:
@@ -22,17 +22,17 @@ Create variables in the file *host_vars/test_01/ansible-runner.yml*
     ar_pip_install: true
     ar_debug: false
     ar_owner: admin
-    ar_pip_extraagrs: "--user"
+    ar_pip_extraagrs: --user --upgrade
 
 Install ansible-runner
     
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml
+    shell> ansible-playbook pb.yml
     ...
-    TASK [vbotka.ansible_runner : packages: Install Ansible Runner pip packages for admin]
-    changed: [test_01] => (item={'name': 'ansible-runner'})
+    TASK [vbotka.ansible_runner : packages: Install Ansible Runner PyPI packages for admin]
+    changed: [test_01] => (item=ansible-runner)
 
 Show ansible-runner package was installed by pip for admin
     
@@ -43,7 +43,7 @@ Show ansible-runner package was installed by pip for admin
    admin
 
    shell> pip list | grep ansible-runner
-   ansible-runner               1.4.6
+   ansible-runner               2.3.4
 
    shell> which ansible-runner
    /home/admin/.local/bin/ansible-runner
