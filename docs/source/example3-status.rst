@@ -1,13 +1,13 @@
 .. _ug_usage_example3_status:
 
 Example 3: Handle custom status of playbook
--------------------------------------------
+===========================================
 
 .. contents::
    :local:
 
 Playbook
-^^^^^^^^
+--------
 
 Generate random success or failure of the script (9,15) and register
 the results (10,16). Put the *rc* codes into the dictionary *my_rc*
@@ -45,7 +45,7 @@ the results (10,16). Put the *rc* codes into the dictionary *my_rc*
 
 
 Enable custom status
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 	   
 .. code-block:: sh
    :linenos:
@@ -56,7 +56,7 @@ Enable custom status
 
 
 Wrapper ansible-runner
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 [`arwrapper.bash <https://github.com/vbotka/ansible-runner/blob/master/contrib/arwrapper.bash>`_]
 
@@ -67,7 +67,7 @@ Wrapper ansible-runner
 
 
 Run the playbook and display the artifacts' directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------------------
 
 Run the playbook with the wrapper command *runid* (1). Last line of
 the output is the directory of the artifacts (59)
@@ -138,7 +138,7 @@ the output is the directory of the artifacts (59)
 
 
 Display the custom status from the artifacts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------------
 
 .. code-block:: sh
    :linenos:
@@ -151,7 +151,7 @@ Display the custom status from the artifacts
 
 
 Select results of the first script
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------
 
 .. code-block:: sh
    :linenos:

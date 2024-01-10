@@ -1,13 +1,13 @@
 .. _ug_usage_example1_cron:
 
 Example 1: Run Ansible playbooks in cron
-----------------------------------------
+========================================
 
 .. contents::
    :local:
 
 Run ssh-agent
-^^^^^^^^^^^^^
+-------------
 
 ``ssh-agent`` is needed to provide the ssh connection plugin with the
 password to the private key, when used. The script below is executed
@@ -76,7 +76,7 @@ Example of *.ssh/environment* created by *ssh-agent*
 
 
 Run gpg-agent
-^^^^^^^^^^^^^
+-------------
 
 `Start gpg-agent
 <https://www.gnupg.org/documentation/manuals/gnupg/Invoking-GPG_002dAGENT.html>`_
@@ -108,7 +108,7 @@ hours. This way, it's not necessary to re-enter the password when the
 
 
 Wrapper ansible-runner
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
      
 Wrapper of *ansible-runner* will source *.ssh/environment* (42) and run
 the *playbook* from the *project* (44)
@@ -121,7 +121,7 @@ the *playbook* from the *project* (44)
     :emphasize-lines: 42,44
 
 Command for cron
-^^^^^^^^^^^^^^^^
+----------------
 
 The script below will use *arwrapper.bash* (5) to run the playbook
 *pb-01.yml* in the projects *test_01, test_02,* and *test_03*
@@ -166,7 +166,7 @@ line. Optionally enable/disable the cleaning of the artifacts (24).
 
 
 Crontab
-^^^^^^^
+-------
    
 Schedule the script in *cron*
 
@@ -186,7 +186,7 @@ Schedule the script in *cron*
 
 
 Email sent by cron
-^^^^^^^^^^^^^^^^^^
+------------------
 
 In our case the */etc/aliases* redirect the emails for *root* to the
 user *admin*. Cron will report the result of the scpript
@@ -209,7 +209,7 @@ script fails
 
 
 Project
-^^^^^^^
+-------
 
 Example of the project's directory without the artifacts. The
 artifacts will be created by *ansible-runner*
@@ -229,10 +229,10 @@ artifacts will be created by *ansible-runner*
        └── pb-01.yml
 
 
-.. note:: It's necesary to provide *ansible-playbook* with the *vault
+.. note:: It's necessary to provide *ansible-playbook* with the *vault
    password* if any data were encrypted. Use `env/cmdline
    <https://ansible-runner.readthedocs.io/en/latest/intro.html#env-cmdline>`_. For
-   example
+   example,
 
 .. code-block:: sh
    :emphasize-lines: 1
@@ -246,7 +246,7 @@ artifacts will be created by *ansible-runner*
 
 
 Playbook
-^^^^^^^^
+--------
 
 Example of a playbook used in the test
 
@@ -256,14 +256,14 @@ Example of a playbook used in the test
    shell> cat /home/admin/.ansible/runner/test_01/project/pb-01.yml
    - hosts: test_01
      remote_user: admin
-     gather_facts: no
+     gather_facts: false
      tasks:
        - debug:
            msg: TEST
 
 
 Artifacts
-^^^^^^^^^
+---------
 
 Example of the project's artifacts
 
@@ -288,5 +288,7 @@ Example of the project's artifacts
 
 
 .. seealso::
+
    * `Runner Artifacts Directory Hierarchy <https://ansible-runner.readthedocs.io/en/latest/intro.html#runner-artifacts-directory-hierarchy>`_
+
    * `ansible_lib: al_runner_events <https://github.com/vbotka/ansible-lib/blob/master/tasks/al_runner_events.yml>`_

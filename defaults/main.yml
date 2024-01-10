@@ -11,23 +11,27 @@ ar_pip_extraagrs: '--user --upgrade'
 
 # Sanity
 ar_sanity: true
+# Test ar_pip_install and ar_pkg_install are mutually exclusive
+ar_sanity_pip_exclusive: true
+# Test ar_owner is defined
 ar_sanity_pip_owner_defined: "{{ ar_pip_install }}"
+# Test ar_pip_executable exists
 ar_sanity_pip_exists: "{{ ar_pip_install }}"
 
 # FreeBSD
-freebsd_install_retries: 10
-freebsd_install_delay: 5
+freebsd_install_retries: 3
+freebsd_install_delay: 10
 freebsd_install_method: packages
 # freebsd_install_method: ports
 freebsd_use_packages: true
 
 # Linux
-linux_install_retries: 10
-linux_install_delay: 5
+linux_install_retries: 3
+linux_install_delay: 10
 
 # pip
-pip_install_retries: 10
-pip_install_delay: 5
+pip_install_retries: 3
+pip_install_delay: 10
 
 # Config
 ar_config: []

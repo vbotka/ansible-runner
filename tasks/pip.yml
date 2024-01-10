@@ -1,23 +1,25 @@
 ---
 
 # TODO: Still open?
-# pip module always set to changed when using check mode #62826
+# The pip module always set to changed when using check mode #62826
 # https://github.com/ansible/ansible/issues/62826
 
-- name: "pip: Debug check mode"
-  ansible.builtin.debug:
-    msg: Module pip does not support check mode (#62826). Skipping.
-  when: ansible_check_mode
+# Note 1.
+# The pip module isn't always idempotent #28952
+# https://github.com/ansible/ansible/issues/28952
+# The isssue was closed. See the Conclusion
 
-- name: "pip: Install Ansible Lint pip packages for {{ ar_owner }}"
+- name: Install Ansible Runner PyPI packages for ar_owner
   block:
 
-    - name: "pip: Install Ansible Runner pip packages for {{ ar_owner }}"
+    - name: "pip: Install Ansible Runner PyPI packages for {{ ar_owner }}"
       become_user: "{{ ar_owner }}"
       become: true
-      # changed_when: false  # Note 1.
+      changed_when:
+        - result.changed
+        - not ansible_check_mode
       ansible.builtin.pip:
-        name: "{{ item.name }}"
+        name: "{{ item }}"
         executable: "{{ ar_pip_executable }}"
         extra_args: "{{ ar_pip_extraagrs|default(omit) }}"
         version: "{{ item.version|default(omit) }}"
@@ -28,14 +30,14 @@
       retries: "{{ pip_install_retries }}"
       delay: "{{ pip_install_delay }}"
 
-    - name: "pip: Debug pip packages"
+    - name: "pip: Debug PyPI packages"
       ansible.builtin.debug:
         var: result
-      when: ar_debug|bool
+      when: ar_debug|bool or ansible_check_mode
 
   rescue:
 
-    - name: "pip: Rescue pip packages"
+    - name: "pip: Rescue PyPI packages"
       ansible.builtin.fail:
         msg: |
           [ERROR] task {{ ansible_failed_task.name }} failed.
@@ -44,34 +46,33 @@
           ansible_failed_result:
             {{ ansible_failed_result|to_yaml(indent=2)|indent(2) }}
 
-  when: not ansible_check_mode
-
-- name: "pip: Install Ansible Runner pip requirements for {{ ar_owner }}"
+- name: Install Ansible Runner PyPI requirements for ar_owner
   block:
 
     - name: "pip: Install Ansible Runner pip requirements for {{ ar_owner }}"
       become_user: "{{ ar_owner }}"
       become: true
-      # changed_when: false  # Note 1.
+      changed_when:
+        - result.changed
+        - not ansible_check_mode
       ansible.builtin.pip:
         requirements: "{{ ar_pip_requirements }}"
         executable: "{{ ar_pip_executable }}"
         extra_args: "{{ pip_extraagrs|default(omit) }}"
-      loop: "{{ ar_pip_requirements }}"
       register: result
       until: result is succeeded
       retries: "{{ pip_install_retries }}"
       delay: "{{ pip_install_delay }}"
       when: ar_pip_requirements|length > 0
 
-    - name: "pip: Debug pip requirements"
+    - name: "pip: Debug PyPI requirements"
       ansible.builtin.debug:
         var: result
       when: ar_debug|bool
 
   rescue:
 
-    - name: "pip: Rescue pip requirements"
+    - name: "pip: Rescue PyPI requirements"
       ansible.builtin.fail:
         msg: |
           [ERROR] task {{ ansible_failed_task.name }} failed.
@@ -79,13 +80,6 @@
             {{ ansible_failed_task|to_yaml(indent=2)|indent(2) }}
           ansible_failed_result:
             {{ ansible_failed_result|to_yaml(indent=2)|indent(2) }}
-
-  when: not ansible_check_mode
-
-# Note 1.
-# The pip module isn't always idempotent #28952
-# https://github.com/ansible/ansible/issues/28952
-# The isssue was closed. See the Conclusion
 
 # EOF
 ...

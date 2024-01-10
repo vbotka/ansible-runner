@@ -2,9 +2,15 @@
 # RedHat vars/defaults for ansible_runner
 
 ar_pip_executable: /usr/bin/pip3
-ar_packages:
-  - name: python-ansible-runner
-ar_pip_requirements: []
+
+ar_packages_rh:
+  - python-ansible-runner
+ar_packages_pip:
+  - ansible-runner
+ar_packages: "{{ ar_pip_install|ternary(ar_packages_pip, ar_packages_rh) }}"
+
+ar_pip_requirements: ''
+
 # ar_links:
 #   - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"
 #     dest: "/home/{{ ar_owner }}/bin/ansible-runner"

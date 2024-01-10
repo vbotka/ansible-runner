@@ -1,14 +1,14 @@
 .. _ug_usage_example2_events:
 
 Example 2: List artifacts' job events
--------------------------------------
+=====================================
 
 .. contents::
    :local:
 
 
 Test negative result
-^^^^^^^^^^^^^^^^^^^^
+--------------------
 
 Let's modify the playbook so that it will fail. For example (8)
 
@@ -19,7 +19,7 @@ Let's modify the playbook so that it will fail. For example (8)
    shell> cat ~/.ansible/runner/test_02/project/pb-01.yml
    - hosts: test_02
      remote_user: admin
-     gather_facts: no
+     gather_facts: false
      tasks:
        - debug:
            msg: TEST
@@ -27,7 +27,7 @@ Let's modify the playbook so that it will fail. For example (8)
 
 		     
 Cron email on failure
-^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Then the cron task in the example *Cron: Example 1* will fail and
 *admin* will receive an email similar to this one
@@ -72,7 +72,7 @@ Then the cron task in the example *Cron: Example 1* will fail and
 
 
 Artifacts
-^^^^^^^^^
+---------
 
 Let's take look at the artifacts of the failed project
 
@@ -103,7 +103,7 @@ Let's take look at the artifacts of the failed project
 
 
 Playbook
-^^^^^^^^
+--------
 
 Prepare a playbook to help with the analysis of the artifacts. For
 example, the playbook below will use `Ansible library
@@ -151,7 +151,7 @@ to modify *msg* (18) and display other attributes
 
 
 Events
-^^^^^^
+------
 
 The play below gives the list of the events
 
@@ -171,7 +171,7 @@ The play below gives the list of the events
 
 
 Failed event(s)
-^^^^^^^^^^^^^^^
+---------------
 
 The next play displays the details of the failed event(s)
 

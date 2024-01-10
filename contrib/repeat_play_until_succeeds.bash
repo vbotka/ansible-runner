@@ -7,7 +7,7 @@ ansible-runner -p test.yml -i ID01 run private1
 rc=$(cat $rcfile)
 echo "rc: $rc"
 
-until [ "0"  == "$rc" ]; do
+until [ "0" = "$rc" ]; do
     ansible-runner -p test.yml -i ID01 run private1
     rc=$(cat $rcfile)
     echo "rc: $rc"

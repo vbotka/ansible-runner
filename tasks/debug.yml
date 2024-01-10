@@ -11,8 +11,6 @@
       ansible_distribution_release: {{ ansible_distribution_release }}
       ansible_python_version: {{ ansible_python_version }}
 
-      ansible_user_id: {{ ansible_user_id }}
-
       freebsd_install_method: {{ freebsd_install_method }}
       freebsd_use_packages: {{ freebsd_use_packages }}
       freebsd_install_retries: {{ freebsd_install_retries }}
@@ -24,22 +22,26 @@
 
       ar_supported_linux_family: {{ ar_supported_linux_family }}
       ar_sanity: {{ ar_sanity }}
+      ar_sanity_pip_exclusive: {{ ar_sanity_pip_exclusive }}
       ar_sanity_pip_owner_defined: {{ ar_sanity_pip_owner_defined }}
       ar_sanity_pip_exists: {{ ar_sanity_pip_exists }}
-      ar_pip_install: {{ ar_pip_install }}
-      ar_pip_executable: {{ ar_pip_executable }}
-      ar_pip_extraagrs: {{ ar_pip_extraagrs|default('UNDEFINED') }}
-      ar_owner: {{ ar_owner }}
       ar_backup_conf: {{ ar_backup_conf }}
-      ar_pkg_install: {{ ar_pkg_install }}
-      ar_packages:
-        {{ ar_packages|to_nice_yaml(indent=2)|indent(2) }}
-      ar_pip_requirements:
-        {{ ar_pip_requirements|to_nice_yaml(indent=2)|indent(2) }}
-      ar_links:
-        {{ ar_links|to_nice_yaml(indent=2)|indent(2) }}
+
       ar_config:
         {{ ar_config|to_nice_yaml(indent=2)|indent(2) }}
+      ar_pkg_install: {{ ar_pkg_install }}
+      ar_pip_install: {{ ar_pip_install }}
+      ar_packages:
+        {{ ar_packages|to_nice_yaml(indent=2)|indent(2) }}
+      ar_owner: {{ ar_owner }}
+      ar_pip_executable: {{ ar_pip_executable }}
+      ar_pip_extraagrs: {{ ar_pip_extraagrs|default('UNDEFINED') }}
+      ar_pip_requirements: {{ ar_pip_requirements }}
+      ar_links:
+        {{ ar_links|to_nice_yaml(indent=2)|indent(2) }}
+      ar_packages_override: {{ ar_packages_override|default('UNDEFINED') }}
+      ar_pip_executable_override: {{ ar_pip_executable_override|default('UNDEFINED') }}
+      ar_pip_requirements_override: {{ ar_pip_requirements_override|default('UNDEFINED') }}
 
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
