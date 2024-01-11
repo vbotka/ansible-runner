@@ -13,6 +13,7 @@ Release Summary
 
 Major Changes
 -------------
+* Run sanity.yml before packages.yml
 
 Minor Changes
 -------------

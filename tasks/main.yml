@@ -10,15 +10,15 @@
   when: ar_debug|bool
   tags: ar_debug
 
-- name: Import packages.yml
-  ansible.builtin.import_tasks: packages.yml
-  when: ar_pkg_install|bool
-  tags: ar_packages
-
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
   when: ar_sanity|bool
   tags: ar_sanity
+
+- name: Import packages.yml
+  ansible.builtin.import_tasks: packages.yml
+  when: ar_pkg_install|bool
+  tags: ar_packages
 
 - name: Import pip.yml
   ansible.builtin.import_tasks: pip.yml
