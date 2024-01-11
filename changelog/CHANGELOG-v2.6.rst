@@ -5,6 +5,25 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.1
+=====
+
+Release Summary
+---------------
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Bump 2.6.1
+* Update docs
+* Update comments in defaults
+
+Breaking Changes / Porting Guide
+--------------------------------
+
+
 2.6.0
 =====
 
