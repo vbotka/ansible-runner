@@ -86,7 +86,7 @@ pip:
 By default the pip arguments are set
 
 ```yaml
-ar_pip_extraagrs: '--user --upgrade'
+ar_pip_extraagrs: --user --upgrade
 ```
 
 See [Conclusions. The pip module isn't always idempotent #28952](https://github.com/ansible/ansible/issues/28952):
