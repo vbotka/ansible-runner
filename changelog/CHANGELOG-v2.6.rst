@@ -10,6 +10,7 @@ vbotka.ansible_runner 2.6 Release Notes
 
 Release Summary
 ---------------
+Update docs. Improve work-flow.
 
 Major Changes
 -------------
@@ -18,12 +19,8 @@ Major Changes
 Minor Changes
 -------------
 * Bump 2.6.1
-* Update docs
 * Update comments in defaults
-
-Breaking Changes / Porting Guide
---------------------------------
-
+* Update docs requirements readthedocs-sphinx-search==0.3.2
 
 2.6.0
 =====
@@ -39,6 +36,3 @@ Minor Changes
 -------------
 * Update docs
 * Update README
-
-Breaking Changes / Porting Guide
---------------------------------
