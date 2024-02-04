@@ -1,10 +1,10 @@
 ---
-# Ubuntu vars/defaults for ansible_runner
+# Ubuntu 22.04 Jammy vars ansible_runner
 
 ar_pip_executable: /usr/bin/pip3
 
 ar_packages:
-  - ansible-runner
+  - python3-ansible-runner
 
 # Path to a pip requirements file local to the remote system
 ar_pip_requirements: ""

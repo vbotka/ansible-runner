@@ -5,6 +5,24 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.2
+=====
+
+Release Summary
+---------------
+Fix Ansible lint.
+
+Major Changes
+-------------
+* Add Ubuntu-jammy.yml, Ubuntu-lunar.yml, Ubuntu-mantic.yml, and
+  Ubuntu-noble.yml to vars/defaults
+
+Minor Changes
+-------------
+* Update tests.
+* Add .ansible-lint.local
+
+
 2.6.1
 =====
 

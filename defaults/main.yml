@@ -6,7 +6,7 @@ ar_pip_install: false
 ar_debug: false
 ar_backup_conf: false
 
-ar_supported_linux_family: ['RedHat', 'Debian']
+ar_supported_linux_family: [RedHat, Debian]
 ar_pip_extraagrs: --user --upgrade
 
 # Sanity

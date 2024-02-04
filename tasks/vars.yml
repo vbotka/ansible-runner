@@ -1,44 +1,43 @@
 ---
 
 - name: Declare ar_owner when undefined
+  when: ar_owner is undefined
   block:
 
-    - name: "vars: Get the user"
-      setup:
+    - name: "Vars: Get the user"
+      ansible.builtin.setup:
         gather_subset: user
       become: false
 
-    - name: "vars: Debug user"
+    - name: "Vars: Debug user"
       ansible.builtin.debug:
         msg: |
-          ansible_user: {{ ansible_user|d('UDEFINED') }}
-          ansible_user_id: {{ ansible_user_id|d('UDEFINED') }}
-      when: ar_debug|bool
+          ansible_user: {{ ansible_user | d('UDEFINED') }}
+          ansible_user_id: {{ ansible_user_id | d('UDEFINED') }}
+      when: ar_debug | bool
 
-    - name: "vars: Declare ar_owner"
+    - name: "Vars: Declare ar_owner"
       ansible.builtin.set_fact:
-        ar_owner: "{{ ansible_user|d(ansible_user_id) }}"
+        ar_owner: "{{ ansible_user | d(ansible_user_id) }}"
 
-  when: ar_owner is undefined
-
-- name: "vars: Include OS vars"
+- name: "Vars: Include OS vars"  # noqa: var-naming[no-role-prefix]
   ansible.builtin.include_role:
     name: vbotka.ansible_lib
     tasks_from: al_include_os_vars_path
   vars:
     al_os_vars_path: "{{ ansible_parent_role_paths.0 }}"
 
-- name: "vars: Override ar_packages"
+- name: "Vars: Override ar_packages"
   ansible.builtin.set_fact:
     ar_packages: "{{ ar_packages_override }}"
   when: ar_packages_override is defined
 
-- name: "vars: Override ar_pip_executable"
+- name: "Vars: Override ar_pip_executable"
   ansible.builtin.set_fact:
     ar_pip_executable: "{{ ar_pip_executable_override }}"
   when: ar_pip_executable_override is defined
 
-- name: "vars: Override ar_pip_requirements"
+- name: "Vars: Override ar_pip_requirements"
   ansible.builtin.set_fact:
     ar_pip_requirements: "{{ ar_pip_requirements_override }}"
   when: ar_pip_requirements_override is defined
