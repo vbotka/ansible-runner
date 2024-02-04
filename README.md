@@ -97,6 +97,17 @@ See [Conclusions. The pip module isn't always idempotent #28952](https://github.
   some software in Python, better use a virtualenv technology.
 
 
+### Ansible lint
+
+Use the configuration file *.ansible-lint.local* when running
+*ansible-lint*. Some rules might be disabled and some warnings might
+be ignored. See the notes in the configuration file.
+
+```bash
+shell> ansible-lint -c .ansible-lint.local
+```
+
+
 ## Examples
 
 1) [Repeat play until succeeds](https://github.com/vbotka/ansible-runner/blob/master/contrib/repeat_play_until_succeeds.bash)

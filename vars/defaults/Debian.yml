@@ -7,7 +7,7 @@ ar_packages:
   - ansible-runner
 
 # Path to a pip requirements file local to the remote system
-ar_pip_requirements: ''
+ar_pip_requirements: ""
 
 # ar_links:
 #   - src: "/home/{{ ar_owner }}/.local/bin/ansible-runner"

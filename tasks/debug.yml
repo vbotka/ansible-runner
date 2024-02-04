@@ -1,6 +1,6 @@
 ---
 
-- name: "debug: Ansible Runner"
+- name: "Debug: Ansible Runner"
   vars:
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
@@ -28,20 +28,20 @@
       ar_backup_conf: {{ ar_backup_conf }}
 
       ar_config:
-        {{ ar_config|to_nice_yaml(indent=2)|indent(2) }}
+        {{ ar_config | to_nice_yaml(indent=2) | indent(2) }}
       ar_pkg_install: {{ ar_pkg_install }}
       ar_pip_install: {{ ar_pip_install }}
       ar_packages:
-        {{ ar_packages|to_nice_yaml(indent=2)|indent(2) }}
+        {{ ar_packages | to_nice_yaml(indent=2) | indent(2) }}
       ar_owner: {{ ar_owner }}
       ar_pip_executable: {{ ar_pip_executable }}
-      ar_pip_extraagrs: {{ ar_pip_extraagrs|default('UNDEFINED') }}
+      ar_pip_extraagrs: {{ ar_pip_extraagrs | d('UNDEFINED') }}
       ar_pip_requirements: {{ ar_pip_requirements }}
       ar_links:
-        {{ ar_links|to_nice_yaml(indent=2)|indent(2) }}
-      ar_packages_override: {{ ar_packages_override|default('UNDEFINED') }}
-      ar_pip_executable_override: {{ ar_pip_executable_override|default('UNDEFINED') }}
-      ar_pip_requirements_override: {{ ar_pip_requirements_override|default('UNDEFINED') }}
+        {{ ar_links | to_nice_yaml(indent=2) | indent(2) }}
+      ar_packages_override: {{ ar_packages_override | d('UNDEFINED') }}
+      ar_pip_executable_override: {{ ar_pip_executable_override | d('UNDEFINED') }}
+      ar_pip_requirements_override: {{ ar_pip_requirements_override | d('UNDEFINED') }}
 
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"

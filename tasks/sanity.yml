@@ -1,35 +1,34 @@
 ---
 
-- name: "sanity: Test ar_pip_install and ar_pkg_install mutually exclusive"
+- name: "Sanity: Test ar_pip_install and ar_pkg_install mutually exclusive"
   ansible.builtin.assert:
     that: not (ar_pip_install and ar_pkg_install)
-    fail_msg: "[ERROR] ar_pip_install and ar_pkg_install are mutually exclusive"
-  when: ar_sanity_pip_exclusive|bool
+    fail_msg: "[ERR] ar_pip_install and ar_pkg_install are mutually exclusive"
+  when: ar_sanity_pip_exclusive | bool
 
-- name: "sanity: Test ar_owner is defined if ar_pip_install"
+- name: "Sanity: Test ar_owner is defined if ar_pip_install"
   ansible.builtin.assert:
     that: ar_owner is defined
-    fail_msg: "[ERROR] Variable ar_owner required for pip."
+    fail_msg: "[ERR] Variable ar_owner required for pip."
   when:
-    - ar_sanity_pip_owner_defined|bool
-    - ar_pip_install|bool
+    - ar_sanity_pip_owner_defined | bool
+    - ar_pip_install | bool
 
 - name: Test ar_pip_executable exists if ar_pip_install
+  when:
+    - ar_sanity_pip_exists | bool
+    - ar_pip_install | bool
   block:
 
-    - name: "sanity: Stat {{ ar_pip_executable }}"
+    - name: "Sanity: Stat {{ ar_pip_executable }}"
       ansible.builtin.stat:
         path: "{{ ar_pip_executable }}"
       register: result
 
-    - name: "sanity: Test {{ ar_pip_executable }} exists if ar_pip_install"
+    - name: "Sanity: If ar_pip_install test existence of {{ ar_pip_executable }}"
       ansible.builtin.assert:
         that: result.stat.exists
-        fail_msg: "[ERROR] {{ ar_pip_executable }} required for pip."
-
-  when:
-    - ar_sanity_pip_exists|bool
-    - ar_pip_install|bool
+        fail_msg: "[ERR] {{ ar_pip_executable }} required for pip."
 
 # [TODO]
 # when: ar_pip_install exist: python3-setuptools, python3-pip
