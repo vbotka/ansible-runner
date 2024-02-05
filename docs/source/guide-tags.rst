@@ -16,6 +16,7 @@ the tag ``ar_debug`` (when the debug is enabled ``ar_debug=true``)
 
     shell> ansible-playbook ansible-runner.yml -t ar_debug -e ar_debug=true
 
+
 ar_packages
 ===========
 
@@ -34,6 +35,7 @@ Install the packages
    :emphasize-lines: 1
 
     shell> ansible-playbook ansible-runner.yml -t ar_packages
+
 
 ar_pip
 ======

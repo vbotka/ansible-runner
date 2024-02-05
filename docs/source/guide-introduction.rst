@@ -6,13 +6,18 @@ This role to installs and configures Ansible Runner. Optionally,
 configure cron to periodically run Ansible playbooks.
 
 * Ansible role: `ansible_runner <https://galaxy.ansible.com/vbotka/ansible_runner/>`_
+
 * Supported systems:
 
   * `FreeBSD Supported Production Releases <https://www.freebsd.org/releases/>`_
 
   * `Ubuntu Supported Releases <http://releases.ubuntu.com/>`_
 
-* Requirements: `ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
+* Requirements:
+
+  * `ansible_lib <https://galaxy.ansible.com/vbotka/ansible_lib>`_
+
+  * `community.general <https://docs.ansible.com/ansible/latest/collections/community/general/>`_
 
 .. note::
 
