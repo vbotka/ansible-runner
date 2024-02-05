@@ -10,8 +10,8 @@ Test syntax
    shell> ansible-playbook pb.yml --syntax-check
 
 
-Display the variables. Then disable this task ``ar_debug: false`` to
-speedup the playbook
+Display and review the variables. Then disable debug
+``ar_debug=false`` to speedup the playbook
 
 .. code-block:: sh
    :emphasize-lines: 1
@@ -45,7 +45,7 @@ Install distribution packages
 The role and the configuration data in the examples are
 idempotent. Once the installation and configuration have passed there
 should be no changes reported by *ansible-playbook* when running the
-playbook repeatedly.
+playbook repeatedly
 
 .. code-block:: sh
    :emphasize-lines: 1
