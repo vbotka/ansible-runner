@@ -1,6 +1,6 @@
 # Ansible runner
 
-[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/ansible_runner)[![Build Status](https://app.travis-ci.com/vbotka/ansible-runner.svg?branch=master)](https://app.travis-ci.com/github/vbotka/ansible-runner)[![Documentation Status](https://readthedocs.org/projects/ansible-runner-role/badge/?version=latest)](https://ansible-runner-role.readthedocs.io/en/latest/?badge=latest)
+[![quality](https://img.shields.io/ansible/quality/27910)](https://galaxy.ansible.com/vbotka/ansible_runner)[![Build Status](https://app.travis-ci.com/vbotka/ansible-runner.svg?branch=master)](https://app.travis-ci.com/github/vbotka/ansible-runner)[![Documentation Status](https://readthedocs.org/projects/ansible-runner-role/badge/?version=latest)](https://ansible-runner-role.readthedocs.io/en/latest/?badge=latest)[![GitHub tag](https://img.shields.io/github/tag/vbotka/ansible-runner.svg)](https://github.com/vbotka/ansible-runner/tags)
 
 [Ansible role](https://galaxy.ansible.com/vbotka/ansible_runner/). Install and configure [Ansible Runner](https://github.com/ansible/ansible-runner).
 

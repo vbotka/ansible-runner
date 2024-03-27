@@ -16,6 +16,8 @@ Major Changes
 
 Minor Changes
 -------------
+* Update README
+* Update docs
 * travis.yml formatting
 
 
