@@ -10,9 +10,11 @@ vbotka.ansible_runner 2.6 Release Notes
 
 Release Summary
 ---------------
+Feature update.
 
 Major Changes
 -------------
+* Support FreeBSD 13.3 and 14.0
 
 Minor Changes
 -------------
