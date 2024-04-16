@@ -40,21 +40,22 @@ This role has been developed and tested with
 
 ### Variables
 
-* See *tasks/packages.yml*. The OS specific packages will be installed
+* See *tasks/pkg.yml*. The OS specific packages will be installed
   if you set
 
 ```yaml
 ar_pkg_install: true
 ar_pip_install: false
+ar_venv_install: false
 ```
 
 * See *tasks/pip.yml*. Instead, you can use *pip* to install
-  *ansible-runner*. *ar_pkg_install* and *ar_pip_install* are mutually
-  exclusive
+  *ansible-runner*
 
 ```yaml
 ar_pkg_install: false
 ar_pip_install: true
+ar_venv_install: false
 ```
 
 * When installing by pip, set variable *ar_owner* to the user who will
@@ -69,7 +70,7 @@ subset *user* and the variable *ar_owner* will be set. See
 tasks/vars.yml
 
 ```yaml
-ar_owner: "{{ ansible_user|default(ansible_user_id) }}"
+ar_owner: "{{ ansible_user | default(ansible_user_id) }}"
 ```
 
 The *pip* installation task will run
@@ -96,6 +97,15 @@ See [Conclusions. The pip module isn't always idempotent #28952](https://github.
   package manager (apt/yum/dnf/etc.). If you want to manage env for
   some software in Python, better use a virtualenv technology.
 
+* See *tasks/venv.yml*. Optionally, you can use *pip* to install
+  *ansible-runner* in Python virtual environment
+
+```yaml
+ar_pkg_install: false
+ar_pip_install: false
+ar_venv_install: true
+```
+
 
 ### Ansible lint
 
@@ -116,7 +126,13 @@ shell> ansible-lint -c .ansible-lint.local
 ## References
 
 - [Ansible Runner - readthedoc](https://ansible-runner.readthedocs.io/en/latest/)
-- [Ansible Runner - github](https://github.com/ansible/ansible-runner/)
+- [GitHub ansible/ansible-runner](https://github.com/ansible/ansible-runner)
+- [Python virtual environments for Ansible](https://www.redhat.com/sysadmin/python-venv-ansible)
+
+
+### Issues
+
+- [ANSIBLE_CALLBACK_PLUGINS in envvars is not working. #219](https://github.com/ansible/ansible-runner/issues/219)
 
 
 ## License
