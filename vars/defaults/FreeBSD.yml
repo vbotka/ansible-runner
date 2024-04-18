@@ -1,15 +1,14 @@
 ---
 # FreeBSD vars/defaults for ansible_runner
 
+ar_packages:
+  - name: sysutils/py-ansible-runner
+    state: "{{ ar_packages_state }}"
+
+ar_virtualenv_command: python3 -m venv
+ar_virtualenv_packages: []
+
 ar_pip_executable: /usr/local/bin/pip-{{ ansible_python_version | splitext | first }}
-
-ar_packages_bsd:
-  - sysutils/py-ansible-runner
-
-ar_packages_pip:
-  - ansible-runner
-
-ar_packages: "{{ ar_pip_install | ternary(ar_packages_pip, ar_packages_bsd) }}"
 
 # Path to a pip requirements file local to the remote system
 ar_pip_requirements: ""

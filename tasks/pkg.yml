@@ -1,0 +1,9 @@
+---
+
+- name: "Pkg: Include fn/packages.yml"
+  ansible.builtin.include_tasks: fn/packages.yml
+  vars:
+    ar_packages_incl: "{{ ar_packages }}"
+
+# EOF
+...

@@ -7,30 +7,37 @@
 
 - name: Import debug.yml
   ansible.builtin.import_tasks: debug.yml
-  when: ar_debug|bool
+  when: ar_debug | bool
   tags: ar_debug
 
 - name: Import sanity.yml
   ansible.builtin.import_tasks: sanity.yml
-  when: ar_sanity|bool
+  when: ar_sanity | bool
   tags: ar_sanity
 
-- name: Import packages.yml
-  ansible.builtin.import_tasks: packages.yml
-  when: ar_pkg_install|bool
-  tags: ar_packages
+- name: Import pkg.yml
+  ansible.builtin.import_tasks: pkg.yml
+  when: ar_pkg_install | bool
+  tags: ar_pkg
 
 - name: Import pip.yml
   ansible.builtin.import_tasks: pip.yml
-  when: ar_pip_install|bool
+  when: ar_pip_install | bool
   tags: ar_pip
+
+- name: Import venv.yml
+  ansible.builtin.import_tasks: venv.yml
+  when: ar_venv_install | bool
+  tags: ar_venv
 
 - name: Import links.yml
   ansible.builtin.import_tasks: links.yml
+  when: ar_links | length > 0
   tags: ar_links
 
 - name: Import config.yml
   ansible.builtin.import_tasks: config.yml
+  when: ar_config | length > 0
   tags: ar_config
 
 # EOF

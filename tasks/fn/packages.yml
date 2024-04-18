@@ -6,9 +6,11 @@
     - freebsd_install_method | lower == 'packages'
   block:
 
-    - name: "Packages: Install Ansible Runner FreeBSD packages"
+    - name: "Packages: Install Ansible Lint FreeBSD packages"
       community.general.pkgng:
-        name: "{{ ar_packages }}"
+        name: "{{ item.name }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ ar_packages_incl }}"
       register: result
       until: result is succeeded
       retries: "{{ freebsd_install_retries }}"
@@ -36,11 +38,11 @@
     - freebsd_install_method | lower == 'ports'
   block:
 
-    - name: "Packages: Install Ansible Runner FreeBSD ports"
+    - name: "Packages: Install Ansible Lint FreeBSD ports"
       community.general.portinstall:
-        name: "{{ item }}"
+        name: "{{ item.name }}"
         use_packages: "{{ freebsd_use_packages }}"
-      loop: "{{ ar_packages }}"
+      loop: "{{ ar_packages_incl }}"
       register: result
       until: result is succeeded
       retries: "{{ freebsd_install_retries }}"
@@ -66,16 +68,17 @@
   when: ansible_os_family in ar_supported_linux_family
   block:
 
-    - name: "Packages: Install Ansible Runner Linux packages"
+    - name: "Packages: Install Ansible Lint Linux packages"
       ansible.builtin.package:
-        name: "{{ item }}"
-      loop: "{{ ar_packages }}"
+        name: "{{ item.name }}"
+        state: "{{ item.state | d(omit) }}"
+      loop: "{{ ar_packages_incl }}"
       register: result
       until: result is succeeded
       retries: "{{ linux_install_retries }}"
       delay: "{{ linux_install_delay }}"
 
-    - name: "Packages: Debug Linux"
+    - name: "Packages: Debug Linux packages"
       ansible.builtin.debug:
         var: result
       when: ar_debug | bool

@@ -1,15 +1,16 @@
 ---
 # RedHat vars/defaults for ansible_runner
 
+ar_packages:
+  - name: python-ansible-runner
+    state: "{{ ar_packages_state }}"
+
+ar_virtualenv_command: python3 -m venv
+ar_virtualenv_packages:
+  - name: python3-venv
+    state: "{{ ar_packages_state }}"
+
 ar_pip_executable: /usr/bin/pip3
-
-ar_packages_rh:
-  - python-ansible-runner
-
-ar_packages_pip:
-  - ansible-runner
-
-ar_packages: "{{ ar_pip_install | ternary(ar_packages_pip, ar_packages_rh) }}"
 
 ar_pip_requirements: ""
 
