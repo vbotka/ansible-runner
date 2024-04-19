@@ -5,6 +5,14 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Fix README tag badge.
+
+
 2.6.4
 =====
 
