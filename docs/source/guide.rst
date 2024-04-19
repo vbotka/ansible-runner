@@ -19,7 +19,7 @@ User's guide
 .. _ug_tasks:
 .. include:: guide-tasks.rst
 .. _ug_task_packages:
-.. include:: task-packages.rst
+.. include:: task-install.rst
 .. _ug_vars:
 .. include:: guide-variables.rst
 .. _ug_defaults:

@@ -9,7 +9,7 @@ srv.example.com (2)
    :emphasize-lines: 2,10
    :linenos:
 
-   shell> cat ansible-runner.yml
+   shell> cat pb.yml
    - hosts: srv.example.com
      gather_facts: true
      connection: ssh
