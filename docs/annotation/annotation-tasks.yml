@@ -38,19 +38,6 @@ mytasks:
     hints: []
     warnings: []
 
-  - file: packages.yml
-    link: packages.yml
-    path: tasks/packages.yml
-    synopsis: |
-      Configure packages.
-    description: |
-      Description of the task.
-    lines: 1,2
-    seealso: []
-    notes: []
-    hints: []
-    warnings: []
-
   - file: sanity.yml
     link: sanity.yml
     path: tasks/sanity.yml
@@ -64,11 +51,50 @@ mytasks:
     hints: []
     warnings: []
 
+  - file: pkg.yml
+    link: pkg.yml
+    path: tasks/pkg.yml
+    synopsis: |
+      Configure pkg.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: packages.yml
+    link: packages.yml
+    path: tasks/fn/packages.yml
+    synopsis: |
+      Configure packages.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
   - file: pip.yml
     link: pip.yml
     path: tasks/pip.yml
     synopsis: |
       Configure pip.
+    description: |
+      Description of the task.
+    lines: 1,2
+    seealso: []
+    notes: []
+    hints: []
+    warnings: []
+
+  - file: venv.yml
+    link: venv.yml
+    path: tasks/venv.yml
+    synopsis: |
+      Configure venv.
     description: |
       Description of the task.
     lines: 1,2

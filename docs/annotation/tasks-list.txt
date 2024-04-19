@@ -1,7 +1,9 @@
 vars.yml
 debug.yml
-packages.yml
 sanity.yml
+pkg.yml
+fn/packages.yml
 pip.yml
+venv.yml
 links.yml
 config.yml
