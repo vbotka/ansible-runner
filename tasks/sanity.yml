@@ -1,20 +1,24 @@
 ---
 
-- name: "Sanity: Test ar_pip_install and ar_pkg_install mutually exclusive"
+- name: "Sanity: Test ar_pip_install, ar_pkg_install, and ar_venv_install are mutually exclusive"
   ansible.builtin.assert:
-    that: not (ar_pip_install and ar_pkg_install)
-    fail_msg: "[ERR] ar_pip_install and ar_pkg_install are mutually exclusive"
+    that: count|int < 2
+    fail_msg: "[ERR] ar_pip_install, ar_pkg_install, and ar_venv_install are mutually exclusive."
+  vars:
+    count: "{{ [ar_pip_install, ar_pkg_install, ar_venv_install] |
+               select |
+               length }}"
   when: ar_sanity_pip_exclusive | bool
 
-- name: "Sanity: Test ar_owner is defined if ar_pip_install"
+- name: "Sanity: Test ar_owner is defined if ar_pip_install or ar_venv_install"
   ansible.builtin.assert:
     that: ar_owner is defined
-    fail_msg: "[ERR] Variable ar_owner required for pip."
+    fail_msg: "[ERR] Variable ar_owner required for pip and venv."
   when:
     - ar_sanity_pip_owner_defined | bool
-    - ar_pip_install | bool
+    - ar_pip_install|bool or ar_venv_install|bool
 
-- name: Test ar_pip_executable exists if ar_pip_install
+- name: If ar_pip_install test existence of {{ ar_pip_executable }}
   when:
     - ar_sanity_pip_exists | bool
     - ar_pip_install | bool

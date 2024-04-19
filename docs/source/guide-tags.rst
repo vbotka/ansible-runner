@@ -14,48 +14,20 @@ the tag ``ar_debug`` (when the debug is enabled ``ar_debug=true``)
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml -t ar_debug -e ar_debug=true
+    shell> ansible-playbook pb.yml -t ar_debug -e ar_debug=true
 
 
-ar_packages
-===========
-
-If the packages listed in ``ar_packages`` are available in the
-distribution enable the installation ``ar_pkg_install=true`` and see if the packages
-can be installed
+See what OS packages will be installed
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml -t ar_packages --check
-
-Install the packages
-
-.. code-block:: sh
-   :emphasize-lines: 1
-
-    shell> ansible-playbook ansible-runner.yml -t ar_packages
+    shell> ansible-playbook pb.yml -t ar_pkg --check
 
 
-ar_pip
-======
-
-If the PyPI packages listed in ``ar_packages`` are available enable the installation ``ar_pip_install=true`` and see if the packages can be installed
+Install OS packages and exit the play
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-    shell> ansible-playbook ansible-runner.yml -t ar_pip --check
-
-Install the packages
-
-.. code-block:: sh
-   :emphasize-lines: 1
-
-    shell> ansible-playbook ansible-runner.yml -t ar_pip
-
-.. warning::
-
-   *ar_pkg_install* and *ar_pip_install* are mutually exclusive. It is not
-   possible to install OS distro packages and PyPI packages in the
-   same play.
+    shell> ansible-playbook pb.yml -t ar_pkg

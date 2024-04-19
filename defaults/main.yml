@@ -3,6 +3,15 @@
 
 ar_pkg_install: false
 ar_pip_install: false
+ar_venv_install: false
+
+ar_packages_state: present
+# ar_packages see vars/defaults
+ar_pip_packages_state: present
+ar_pip_packages:
+  - name: ansible-runner
+    state: "{{ ar_pip_packages_state }}"
+
 ar_debug: false
 ar_backup_conf: false
 
@@ -11,7 +20,7 @@ ar_pip_extraagrs: --user --upgrade
 
 # Sanity
 ar_sanity: true
-# Test ar_pip_install and ar_pkg_install are mutually exclusive
+# Test ar_pip_install, ar_venv_install, and ar_pkg_install are mutually exclusive
 ar_sanity_pip_exclusive: true
 # Test ar_owner is defined
 ar_sanity_pip_owner_defined: "{{ ar_pip_install }}"
@@ -32,6 +41,9 @@ linux_install_delay: 10
 # pip
 pip_install_retries: 3
 pip_install_delay: 10
+
+# venv
+ar_virtualenv: $HOME/env
 
 # Config
 ar_config: []

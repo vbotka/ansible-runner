@@ -2,7 +2,7 @@
 Best practice
 *************
 
-Test syntax
+Test the syntax
 
 .. code-block:: sh
    :emphasize-lines: 1
@@ -19,7 +19,7 @@ Display and review the variables. Then disable debug
    shell> ansible-playbook pb.yml -t ar_debug -e ar_debug=true
 
 
-Dry-run and display changes
+Dry-run the playbook in the check mode and display changes
 
 .. code-block:: sh
    :emphasize-lines: 1
@@ -27,20 +27,16 @@ Dry-run and display changes
    shell> ansible-playbook pb.yml --check --diff
 
 
-Install distribution packages
+Install OS packages ``ar_pkg_install=true`` or PyPI packages
+``ar_pip_install=true``. Optionally, install the packages in Python
+virtual environment ``ar_venv_install=true``. Then disable the
+installation to speedup the playbook
 
 .. code-block:: sh
    :emphasize-lines: 1
 
-   shell> ansible-playbook pb.yml -t ar_packages -e ar_pkg_install=true
+   shell> ansible-playbook pb.yml -t ar_pkg -e ar_pkg_install=true
 
-
-, or install PyPI packages
-
-.. code-block:: sh
-   :emphasize-lines: 1
-
-   shell> ansible-playbook pb.yml -t ar_pip -e ar_pip_install=true
 
 The role and the configuration data in the examples are
 idempotent. Once the installation and configuration have passed there

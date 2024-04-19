@@ -5,6 +5,34 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.4
+=====
+
+Release Summary
+---------------
+Support FreeBSD 13.3 and 14.0. Support Python vritual environment.
+
+Major Changes
+-------------
+* Support FreeBSD 13.3 and 14.0
+* Add tasks venv.yml. Support Python vritual environment.
+
+Minor Changes
+-------------
+* Update README
+* Update docs
+* travis.yml formatting
+* Update vars/defaults
+
+Breaking Changes / Porting Guide
+--------------------------------
+* Variables ar_packages and ar_pip_packages changed from a list to a
+  list of dictionaries.
+* Add variables ar_packages_state and ar_pip_packages_state
+* Tasks packages.yml renamed to pkg.yml
+* Tag ma_packages renmed to ma_pkg
+
+
 2.6.3
 =====
 

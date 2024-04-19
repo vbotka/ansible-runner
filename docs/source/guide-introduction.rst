@@ -30,11 +30,3 @@ configure cron to periodically run Ansible playbooks.
    * `Ansible Runner documentation <https://ansible-runner.readthedocs.io/en/latest/>`_
    * `Ansible Runner source code <https://github.com/ansible/ansible-runner>`_
    * `REST API ansible-runner-service <https://github.com/ansible/ansible-runner-service>`_
-
-.. warning::
-
-   `Conclusions. The pip module isn't always idempotent #28952 <https://github.com/ansible/ansible/issues/28952>`_
-   Quoting: "Managing system site-packages with Pip is not a good idea
-   and will probably break your OS. Those should be solely managed by
-   the OS package manager (apt/yum/dnf/etc.). If you want to manage
-   env for some software in Python, better use a virtualenv technology."

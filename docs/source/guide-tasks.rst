@@ -13,8 +13,7 @@ Test single tasks at single remote host *test_01*. Create a playbook
      roles:
        - vbotka.ansible_runner
 
-Customize configuration, for example, in
-``host_vars/test_01/ar-*.yml`` and check the syntax
+Customize configuration, for example, in ``host_vars/test_01/ar-*.yml`` and check the syntax
 
 .. code-block:: sh
    :emphasize-lines: 1

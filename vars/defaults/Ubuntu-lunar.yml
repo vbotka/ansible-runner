@@ -1,10 +1,18 @@
 ---
-# Ubuntu 23.04 Lunar vars ansible_runner
-
-ar_pip_executable: /usr/bin/pip3
+# Ubuntu 23.04 Lunar vars/defaults for ansible_runner
 
 ar_packages:
-  - python3-ansible-runner
+  - name: python3-ansible-runner
+    state: "{{ ar_packages_state }}"
+
+ar_virtualenv_command: python3 -m venv
+ar_virtualenv_packages:
+  - name: python3-venv
+    state: "{{ ar_packages_state }}"
+  - name: python{{ ansible_python_version | splitext | first }}-venv
+    state: "{{ ar_packages_state }}"
+
+ar_pip_executable: /usr/bin/pip3
 
 # Path to a pip requirements file local to the remote system
 ar_pip_requirements: ""

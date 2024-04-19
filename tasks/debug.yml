@@ -1,6 +1,6 @@
 ---
 
-- name: "Debug: Ansible Runner"
+- name: "Debug: Ansible Runner ar_debug={{ ar_debug | bool }}"
   vars:
     msg: |-
       ansible_architecture: {{ ansible_architecture }}
@@ -25,23 +25,34 @@
       ar_sanity_pip_exclusive: {{ ar_sanity_pip_exclusive }}
       ar_sanity_pip_owner_defined: {{ ar_sanity_pip_owner_defined }}
       ar_sanity_pip_exists: {{ ar_sanity_pip_exists }}
-      ar_backup_conf: {{ ar_backup_conf }}
 
-      ar_config:
-        {{ ar_config | to_nice_yaml(indent=2) | indent(2) }}
-      ar_pkg_install: {{ ar_pkg_install }}
-      ar_pip_install: {{ ar_pip_install }}
-      ar_packages:
-        {{ ar_packages | to_nice_yaml(indent=2) | indent(2) }}
       ar_owner: {{ ar_owner }}
-      ar_pip_executable: {{ ar_pip_executable }}
+      ar_backup_conf: {{ ar_backup_conf }}
+      ar_config:
+        {{ ar_config | to_yaml(indent=2) | indent(2) }}
+      ar_pip_install: {{ ar_pip_install }}
       ar_pip_extraagrs: {{ ar_pip_extraagrs | d('UNDEFINED') }}
+      ar_pip_executable: {{ ar_pip_executable }}
+      ar_pip_executable_override: {{ ar_pip_executable_override | d('UNDEFINED') }}
       ar_pip_requirements: {{ ar_pip_requirements }}
+      ar_pip_requirements_override: {{ ar_pip_requirements_override | d('UNDEFINED') }}
+      ar_pip_packages_state: {{ ar_pip_packages_state }}
+      ar_pip_packages:
+        {{ ar_pip_packages | to_yaml(indent=2) | indent(2) }}
+      ar_venv_install: {{ ar_venv_install }}
+      ar_virtualenv: {{ ar_virtualenv }}
+      ar_virtualenv_command: {{ ar_virtualenv_command | d('UNDEFINED') }}
+      ar_virtualenv_python: {{ ar_virtualenv_python | d('UNDEFINED') }}
+      ar_virtualenv_site_packages: {{ ar_virtualenv_site_packages | d('UNDEFINED') }}
+      ar_virtualenv_packages:
+        {{ ar_virtualenv_packages | to_yaml(indent=2) | indent(2) }}
+      ar_pkg_install: {{ ar_pkg_install }}
+      ar_packages_state: {{ ar_packages_state }}
+      ar_packages:
+        {{ ar_packages | to_yaml(indent=2) | indent(2) }}
+      ar_packages_override: {{ ar_packages_override | d('UNDEFINED') }}
       ar_links:
         {{ ar_links | to_nice_yaml(indent=2) | indent(2) }}
-      ar_packages_override: {{ ar_packages_override | d('UNDEFINED') }}
-      ar_pip_executable_override: {{ ar_pip_executable_override | d('UNDEFINED') }}
-      ar_pip_requirements_override: {{ ar_pip_requirements_override | d('UNDEFINED') }}
 
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"

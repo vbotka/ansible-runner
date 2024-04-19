@@ -73,30 +73,6 @@ Description of the task.
 
 
 
-.. _as_packages.yml:
-
-packages.yml
-------------
-
-Synopsis: Configure packages.
-
-
-Description of the task.
-
-
-[`tasks/packages.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/packages.yml>`_]
-
-.. highlight:: yaml
-    :linenothreshold: 5
-.. literalinclude:: ../../tasks/packages.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
-    :linenos:
-
-
-
-
-
 .. _as_sanity.yml:
 
 sanity.yml
@@ -121,6 +97,54 @@ Description of the task.
 
 
 
+.. _as_pkg.yml:
+
+pkg.yml
+-------
+
+Synopsis: Configure pkg.
+
+
+Description of the task.
+
+
+[`tasks/pkg.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/pkg.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/pkg.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_packages.yml:
+
+packages.yml
+------------
+
+Synopsis: Configure packages.
+
+
+Description of the task.
+
+
+[`tasks/fn/packages.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/fn/packages.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/fn/packages.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
 .. _as_pip.yml:
 
 pip.yml
@@ -137,6 +161,30 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pip.yml
+    :language: Yaml
+    :emphasize-lines: 1,2
+    :linenos:
+
+
+
+
+
+.. _as_venv.yml:
+
+venv.yml
+--------
+
+Synopsis: Configure venv.
+
+
+Description of the task.
+
+
+[`tasks/venv.yml <https://github.com/vbotka/ansible-runner/blob/master/tasks/venv.yml>`_]
+
+.. highlight:: yaml
+    :linenothreshold: 5
+.. literalinclude:: ../../tasks/venv.yml
     :language: Yaml
     :emphasize-lines: 1,2
     :linenos:
