@@ -19,6 +19,7 @@ Minor Changes
 -------------
 * Fix README tag badge.
 * Exclude docs from local ansible-lint
+* Use default rules in local ansible-lint
 
 2.6.4
 =====
