@@ -10,8 +10,15 @@ vbotka.ansible_runner 2.6 Release Notes
 
 Release Summary
 ---------------
-Fix README tag badge.
+Bugfix and maintenance release.
 
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Fix README tag badge.
+* Exclude docs from local ansible-lint
 
 2.6.4
 =====
