@@ -73,6 +73,7 @@
     - name: Templates
       tags: templates
       block:
+
         - name: Set empty list my_files
           ansible.builtin.set_fact:
             my_files: []

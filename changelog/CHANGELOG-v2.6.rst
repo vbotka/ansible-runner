@@ -5,6 +5,26 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.5
+=====
+
+Release Summary
+---------------
+Bugfix and maintenance release with updated docs.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Fix README tag badge.
+* Fix README label.
+* Exclude docs from local ansible-lint
+* Use default rules in local ansible-lint config.
+* Update skip_list in local ansible-lint config.
+* Update docs.
+
+
 2.6.4
 =====
 
