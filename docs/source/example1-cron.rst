@@ -123,11 +123,11 @@ the *playbook* from the *project* (44)
 Command for cron
 ----------------
 
-The script below will use *arwrapper.bash* (5) to run the playbook
+The script below will use *arwrapper.bash* (4) to run the playbook
 *pb-01.yml* in the projects *test_01, test_02,* and *test_03*
-(11-13). If the command (18) succeeds the script will print *[OK]*
-report (23). If you don't want to receive email on success remove this
-line. Optionally enable/disable the cleaning of the artifacts (24).
+(10-12). If the command (17) succeeds the script will print *[OK]*
+report (22). If you don't want to receive email on success remove this
+line. Optionally enable/disable the cleaning of the artifacts (23).
 
 .. code-block:: sh
    :linenos:

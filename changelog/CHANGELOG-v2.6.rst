@@ -10,7 +10,7 @@ vbotka.ansible_runner 2.6 Release Notes
 
 Release Summary
 ---------------
-Bugfix and maintenance release.
+Bugfix and maintenance release with updated docs.
 
 Major Changes
 -------------
@@ -22,6 +22,8 @@ Minor Changes
 * Exclude docs from local ansible-lint
 * Use default rules in local ansible-lint config.
 * Update skip_list in local ansible-lint config.
+* Update docs.
+
 
 2.6.4
 =====

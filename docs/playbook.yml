@@ -6,9 +6,11 @@
   debugger: on_failed
 
   tasks:
+
     - name: Tasks
       tags: tasks
       block:
+
         - name: Include variables
           ansible.builtin.include_vars:
             file: annotation/annotation-tasks.yml
@@ -22,6 +24,7 @@
     - name: Handlers
       tags: handlers
       block:
+
         - name: Include variables
           ansible.builtin.include_vars:
             file: annotation/annotation-handlers.yml
@@ -35,6 +38,7 @@
     - name: Templates
       tags: templates
       block:
+
         - name: Include variables
           ansible.builtin.include_vars:
             file: annotation/annotation-templates.yml
