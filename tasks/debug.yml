@@ -53,7 +53,6 @@
       ar_packages_override: {{ ar_packages_override | d('UNDEFINED') }}
       ar_links:
         {{ ar_links | to_nice_yaml(indent=2) | indent(2) }}
-
   ansible.builtin.debug:
     msg: "{{ '{}'.format(msg) }}"
 
