@@ -2,12 +2,12 @@
 Tasks
 *****
 
-Test single tasks at single remote host *test_01*. Create a playbook
+Test single tasks at single remote host *test_01*. Create the playbook *pb.yml*
 
 .. code-block:: yaml
-   :emphasize-lines: 1
+   :emphasize-lines: 5
 
-   shell> cat pb.yml
+   ---
    - hosts: test_01
      become: true
      roles:
@@ -21,7 +21,7 @@ Customize configuration, for example, in ``host_vars/test_01/ar-*.yml`` and chec
    shell> ansible-playbook pb.yml --syntax-check
 
 Then dry-run the selected task and see what will be changed. Replace
-<tag> with valid tag.
+<tag> with valid tag
 
 .. code-block:: sh
    :emphasize-lines: 1

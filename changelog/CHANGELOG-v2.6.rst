@@ -5,6 +5,25 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.6
+=====
+
+Release Summary
+---------------
+Ansible 2.17 update. Bugfix release with updated docs.
+
+Major Changes
+-------------
+* Add supported FreeBSD 14.1
+
+Minor Changes
+-------------
+* Update README.
+* Bump docs version.
+* Remove obsolete comment from docs/source/conf.py
+* Docs formatting.
+
+
 2.6.5
 =====
 
