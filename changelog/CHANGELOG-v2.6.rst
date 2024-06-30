@@ -21,6 +21,7 @@ Minor Changes
 * Update README.
 * Bump docs version.
 * Remove obsolete comment from docs/source/conf.py
+* Docs formatting.
 
 
 2.6.5

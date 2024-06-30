@@ -2,14 +2,14 @@
 Playbook
 ********
 
-Below is a simple playbook that calls this role (10) at a single host
+Below is a simple playbook *pb.yml* that calls this role (10) at a single host
 srv.example.com (2)
 
 .. code-block:: yaml
    :emphasize-lines: 2,10
    :linenos:
 
-   shell> cat pb.yml
+   ---
    - hosts: srv.example.com
      gather_facts: true
      connection: ssh
