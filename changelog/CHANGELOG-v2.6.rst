@@ -4,6 +4,7 @@ vbotka.ansible_runner 2.6 Release Notes
 
 .. contents:: Topics
 # BEGIN Commits 2.6.7
+- Update
 - Format meta/main.yml
 - Start devel 2.6.7
 # END Commits 2.6.7
@@ -16,6 +17,10 @@ Major Changes
 -------------
 Minor Changes
 -------------
+- Update
+- Format meta/main.yml
+- Start devel 2.6.7
+
 Bugfixes
 --------
 Breaking Changes / Porting Guide
