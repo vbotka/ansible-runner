@@ -3,6 +3,7 @@
 - name: "Debug: Ansible Runner ar_debug={{ ar_debug | bool }}"
   vars:
     msg: |-
+      ar_role_version: {{ ar_role_version }}
       ansible_architecture: {{ ansible_architecture }}
       ansible_os_family: {{ ansible_os_family }}
       ansible_distribution: {{ ansible_distribution }}

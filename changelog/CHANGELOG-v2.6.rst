@@ -5,6 +5,22 @@ vbotka.ansible_runner 2.6 Release Notes
 .. contents:: Topics
 
 
+2.6.7
+=====
+
+Release Summary
+---------------
+Maintenance updated.
+
+Major Changes
+-------------
+
+Minor Changes
+-------------
+* Add variable ar_role_version
+* Update tasks/debug.yml
+
+
 2.6.6
 =====
 
