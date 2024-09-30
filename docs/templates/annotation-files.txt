@@ -1,7 +1,0 @@
-config.yml
-debug.yml
-links.yml
-packages.yml
-pip.yml
-sanity.yml
-vars.yml
