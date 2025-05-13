@@ -1,10 +1,11 @@
 .. _ug:
 
-############
 User's guide
 ############
+
 .. contents:: Table of Contents
-   :depth: 4
+   :local:
+   :depth: 3
 
 .. _ug_introduction:
 .. include:: guide-introduction.rst

@@ -4,14 +4,10 @@ ANSIBLE_CALLBACK_PLUGINS in envvars is not working. #219
 --------------------------------------------------------
 
 * Updated: July,9 2020
-* Status: `Closed without fix <https://github.com/ansible/ansible-runner/issues/219#issuecomment-525795580>`_ Aug 2019
+* Status: `Closed without fix`_ Aug 2019
 
-
-It's not possible to change Ansible callback
-plugin. ``ansible-runner`` ignores environment variable
-``ANSIBLE_STDOUT_CALLBACK`` and uses hardwired callback plugins (2,4). See
-`runner_config.py
-<https://github.com/ansible/ansible-runner/blob/devel/ansible_runner/runner_config.py#L199>`_
+It's not possible to change Ansible callback plugin. ``ansible-runner`` ignores environment variable
+``ANSIBLE_STDOUT_CALLBACK`` and uses hardwired callback plugins (2,4). See `runner_config.py`_
 
 .. code-block:: python
    :linenos:
@@ -32,7 +28,6 @@ To test it, set the environment variables of the project *test_02*
    ---
    MY_TEST_VAR: my-test-var
    ANSIBLE_STDOUT_CALLBACK: actionable
-
 
 Prepare a playbook
 
@@ -75,3 +70,6 @@ and test it
    ok: [test_02] => {
        "msg": "ANSIBLE_STDOUT_CALLBACK [awx_display]"
    }
+
+.. _Closed without fix: https://github.com/ansible/ansible-runner/issues/219#issuecomment-525795580
+.. _runner_config.py: https://github.com/ansible/ansible-runner/blob/devel/ansible_runner/runner_config.py#L199
