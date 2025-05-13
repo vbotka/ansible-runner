@@ -15,6 +15,7 @@ Ansible 2.18 update
 Major Changes
 -------------
 * Supported FreeBSD 13.4, 13.5, and 14.2
+* Updated documentation. Updated annotation templates.
 
 Minor Changes
 -------------

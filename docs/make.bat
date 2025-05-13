@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=source
 set BUILDDIR=build
-set SPHINXPROJ=ansible-role-linux-postinstall
+set SPHINXPROJ=ansible-runner-role
 
 if "%1" == "" goto help
 
