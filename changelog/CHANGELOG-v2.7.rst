@@ -10,11 +10,12 @@ vbotka.ansible_runner 2.7 Release Notes
 
 Release Summary
 ---------------
-Ansible 2.18 update
+Ansible 2.18 update.
 
 Major Changes
 -------------
-* Supported FreeBSD 13.4, 13.5, and 14.2
+* Updated Ansible to 2.18
+* Supported FreeBSD 13.4, 13.5, 14.1, 14.2, 14.3
 * Updated documentation. Updated annotation templates.
 
 Minor Changes
