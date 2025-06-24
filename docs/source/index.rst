@@ -3,7 +3,7 @@ Ansible Runner
 
 `vbotka.ansible_runner`_
 
-Role version 2.7.0
+version |release|
 
 | This `role`_ and the documentation is work in progress.
 | Feel free to `share your feedback and report issues`_.
