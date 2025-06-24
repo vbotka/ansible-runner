@@ -1,6 +1,6 @@
 ---
 # defaults ansible_runner
-ar_role_version: 2.6.9
+ar_role_version: 2.7.0
 
 ar_pkg_install: false
 ar_pip_install: false

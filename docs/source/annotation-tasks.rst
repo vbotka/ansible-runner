@@ -19,7 +19,7 @@ Import tasks if enabled.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/main.yml
-    :language: Yaml
+    :language: yaml
     :emphasize-lines: 1,2
     :linenos:
 
@@ -32,7 +32,7 @@ Import tasks if enabled.
 vars.yml
 --------
 
-Synopsis: Configure vars.
+Synopsis: Configure vars
 
 
 Description of the task.
@@ -43,8 +43,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/vars.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -56,7 +56,7 @@ Description of the task.
 debug.yml
 ---------
 
-Synopsis: Configure debug.
+Synopsis: Configure debug
 
 
 Description of the task.
@@ -67,8 +67,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/debug.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -80,7 +80,7 @@ Description of the task.
 sanity.yml
 ----------
 
-Synopsis: Configure sanity.
+Synopsis: Configure sanity
 
 
 Description of the task.
@@ -91,8 +91,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/sanity.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -104,7 +104,7 @@ Description of the task.
 pkg.yml
 -------
 
-Synopsis: Configure pkg.
+Synopsis: Configure pkg
 
 
 Description of the task.
@@ -115,8 +115,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pkg.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -128,7 +128,7 @@ Description of the task.
 packages.yml
 ------------
 
-Synopsis: Configure packages.
+Synopsis: Configure packages
 
 
 Description of the task.
@@ -139,8 +139,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/fn/packages.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -152,7 +152,7 @@ Description of the task.
 pip.yml
 -------
 
-Synopsis: Configure pip.
+Synopsis: Configure pip
 
 
 Description of the task.
@@ -163,8 +163,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/pip.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -176,7 +176,7 @@ Description of the task.
 venv.yml
 --------
 
-Synopsis: Configure venv.
+Synopsis: Configure venv
 
 
 Description of the task.
@@ -187,8 +187,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/venv.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -200,7 +200,7 @@ Description of the task.
 links.yml
 ---------
 
-Synopsis: Configure links.
+Synopsis: Configure links
 
 
 Description of the task.
@@ -211,8 +211,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/links.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 
@@ -224,7 +224,7 @@ Description of the task.
 config.yml
 ----------
 
-Synopsis: Configure config.
+Synopsis: Configure config
 
 
 Description of the task.
@@ -235,8 +235,8 @@ Description of the task.
 .. highlight:: yaml
     :linenothreshold: 5
 .. literalinclude:: ../../tasks/config.yml
-    :language: Yaml
-    :emphasize-lines: 1,2
+    :language: yaml
+    :emphasize-lines: 1
     :linenos:
 
 

@@ -1,4 +1,3 @@
-************
 OS variables
 ************
 
@@ -7,7 +6,7 @@ OS variables
 Debian
 ======
   
-[`vars/defaults/Debian.yml <https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/Debian.yml>`_]
+[`vars/defaults/Debian.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -19,7 +18,7 @@ Debian
 FreeBSD
 =======
   
-[`vars/defaults/FreeBSD.yml <https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/FreeBSD.yml>`_]
+[`vars/defaults/FreeBSD.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -31,7 +30,7 @@ FreeBSD
 RedHat
 ======
   
-[`vars/defaults/RedHat.yml <https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/RedHat.yml>`_]
+[`vars/defaults/RedHat.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -43,7 +42,7 @@ RedHat
 Ubuntu
 ======
   
-[`vars/defaults/Ubuntu.yml <https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/Ubuntu.yml>`_]
+[`vars/defaults/Ubuntu.yml`_]
 
 .. highlight:: yaml
     :linenothreshold: 5
@@ -51,3 +50,8 @@ Ubuntu
     :language: yaml
     :emphasize-lines: 2
     :linenos:
+
+.. _vars/defaults/Debian.yml: https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/Debian.yml
+.. _vars/defaults/FreeBSD.yml: https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/FreeBSD.yml
+.. _vars/defaults/RedHat.yml: https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/RedHat.yml
+.. _vars/defaults/Ubuntu.yml: https://github.com/vbotka/ansible-runner/blob/master/vars/defaults/Ubuntu.yml
