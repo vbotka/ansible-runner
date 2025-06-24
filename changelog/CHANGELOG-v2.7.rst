@@ -17,7 +17,8 @@ Major Changes
 
 Minor Changes
 -------------
-* Removed .ansible from version control.
+* Removed .ansible from the version control.
+* Added .gitignore to the version control.
 
 
 2.7.0
